@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vbK-U3-N0h">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--All Studies Available-->
+        <scene sceneID="2lD-Na-KD7">
+            <objects>
+                <tableViewController id="R4F-x4-rR7" customClass="ListStudiesTableViewController" customModule="Proj_Insight" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="WKt-UG-TTZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllStudiesTableViewCell" rowHeight="90" id="RUi-Xj-ebA" customClass="AllStudiesTableViewCell" customModule="Proj_Insight" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="414" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RUi-Xj-ebA" id="r85-n1-K8n">
+                                    <frame key="frameInset" width="414" height="90"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXx-mC-X9k">
+                                            <frame key="frameInset" minX="8" minY="34" width="398" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="studyName" destination="XXx-mC-X9k" id="Wd2-3Q-1ZR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="R4F-x4-rR7" id="nKR-EO-SOy"/>
+                            <outlet property="delegate" destination="R4F-x4-rR7" id="B60-BQ-D93"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="All Studies Available" id="qQ8-5Z-0a5"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kpe-JI-bfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1260.8695652173915" y="-1097.2826086956522"/>
+        </scene>
+        <!--Analyze-->
+        <scene sceneID="Auk-ud-BNB">
+            <objects>
+                <viewController id="dvi-tp-lUl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x9L-zo-e6i"/>
+                        <viewControllerLayoutGuide type="bottom" id="3wY-bA-So6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v2M-dS-cgI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Analyze" image="analyzeIcon.png" id="f1y-4s-3nd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CZL-G0-pcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="354" y="748"/>
+        </scene>
+        <!--My Studies-->
+        <scene sceneID="cWM-Ot-XqH">
+            <objects>
+                <tableViewController id="hgG-Ox-eaO" customClass="myStudiesTableViewController" customModule="Proj_Insight" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="1cC-Fg-xuw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="GaX-CL-4GK" customClass="myStudiesTableViewCell" customModule="Proj_Insight" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="414" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GaX-CL-4GK" id="sg9-Sv-0YO">
+                                    <frame key="frameInset" width="414" height="90"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6O-Hf-hlI">
+                                            <frame key="frameInset" minX="8" minY="34" width="398" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="myStudyName" destination="m6O-Hf-hlI" id="gQi-SS-OSR"/>
+                                    <outlet property="studyName" destination="m6O-Hf-hlI" id="WVZ-qJ-g7y"/>
+                                    <segue destination="pBw-dP-4RS" kind="show" id="DZB-uR-Ubh"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hgG-Ox-eaO" id="6oh-NH-xBG"/>
+                            <outlet property="delegate" destination="hgG-Ox-eaO" id="MNr-JP-U0M"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Studies" id="YlX-fJ-sLr">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="SEj-XH-pJV">
+                            <connections>
+                                <action selector="addStudy:" destination="hgG-Ox-eaO" id="qOL-fW-9JJ"/>
+                                <segue destination="yHj-OM-cAH" kind="show" id="AYn-ic-XfZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addStudyButton" destination="SEj-XH-pJV" id="H8h-Kg-5oE"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEP-X1-gXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1293" y="-227"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ART-W9-ucN">
+            <objects>
+                <viewController id="yHj-OM-cAH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KJV-Xa-Zfh"/>
+                        <viewControllerLayoutGuide type="bottom" id="aMf-Lf-2ib"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lok-jA-1WP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ufv-3T-gWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2167" y="-228"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KKv-IO-I9h">
+            <objects>
+                <viewController id="pBw-dP-4RS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lae-OS-G2V"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ecf-8o-Koy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XeC-tF-uff">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TBm-BF-vWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2167" y="553"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Az7-pV-pUw">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="vbK-U3-N0h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="kOn-Ub-Tm4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="NEw-FF-dxT" kind="relationship" relationship="viewControllers" id="2CP-xM-YLr"/>
+                        <segue destination="imf-lg-vkj" kind="relationship" relationship="viewControllers" id="HD6-BK-U7P"/>
+                        <segue destination="dvi-tp-lUl" kind="relationship" relationship="viewControllers" id="Uu4-ea-NTq"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WKf-1j-dGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1007" y="-225"/>
+        </scene>
+        <!--Your Studies-->
+        <scene sceneID="zor-ix-ddU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="imf-lg-vkj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Your Studies" image="editIcon.png" id="Dv0-Wb-MjC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="crR-NU-uXD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hgG-Ox-eaO" kind="relationship" relationship="rootViewController" id="uUE-sM-hWm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z91-fx-DKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="354" y="-227"/>
+        </scene>
+        <!--List All Studies-->
+        <scene sceneID="ScN-ZQ-YwK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NEw-FF-dxT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="List All Studies" image="clipBoardIcon.png" id="oDK-CX-7N2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WoY-zu-7f6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="R4F-x4-rR7" kind="relationship" relationship="rootViewController" id="GD6-rc-0Zl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XgD-WW-bHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="353.62318840579712" y="-1097.2826086956522"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="analyzeIcon.png" width="30" height="30"/>
+        <image name="clipBoardIcon.png" width="30" height="30"/>
+        <image name="editIcon.png" width="30" height="30"/>
+    </resources>
+</document>
