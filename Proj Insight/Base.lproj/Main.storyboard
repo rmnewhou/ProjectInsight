@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RUi-Xj-ebA" id="r85-n1-K8n">
-                                    <frame key="frameInset" width="414" height="89.666666666666671"/>
+                                    <frame key="frameInset" width="414" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXx-mC-X9k">
@@ -120,7 +120,7 @@
             </objects>
             <point key="canvasLocation" x="1293" y="-227"/>
         </scene>
-        <!--Terms and Conditions-->
+        <!--Toggle T & Cs-->
         <scene sceneID="hFp-ff-OJW">
             <objects>
                 <viewController id="hhA-lp-Xvn" customClass="TermsConditionsBuilder" customModule="Proj_Insight" customModuleProvider="target" sceneMemberID="viewController">
@@ -223,7 +223,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Terms and Conditions" id="32K-nC-wsA">
+                    <navigationItem key="navigationItem" title="Toggle T &amp; Cs" id="32K-nC-wsA">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BGH-AK-b3R">
                             <connections>
                                 <action selector="cancel:" destination="hhA-lp-Xvn" id="ggP-WQ-6Ge"/>
@@ -232,6 +232,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" style="plain" id="u0P-G6-ywb">
                             <connections>
                                 <action selector="nextButton:" destination="hhA-lp-Xvn" id="xq6-IW-2lA"/>
+                                <segue destination="GEd-o6-g0d" kind="show" id="tjG-p1-ddp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -249,6 +250,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtJ-dd-Pt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3312" y="-371"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="crb-8W-R8F">
+            <objects>
+                <viewController id="GEd-o6-g0d" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CBW-FQ-5gR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wfy-I0-qyD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hI7-mQ-gN1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <navigationItem title="Title Name" id="PSg-uu-pFQ">
+                    <barButtonItem key="rightBarButtonItem" title="Next" style="plain" id="7PV-e6-rOA">
+                        <connections>
+                            <action selector="nextButton:" destination="hhA-lp-Xvn" id="xEy-zq-leB"/>
+                        </connections>
+                    </barButtonItem>
+                </navigationItem>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cPX-dD-MGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4209" y="-372"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="KKv-IO-I9h">
