@@ -12,6 +12,7 @@ class myStudiesTableViewController: UITableViewController {
     
     @IBOutlet weak var addStudyButton: UIBarButtonItem!
 
+    @IBOutlet weak var NavigationItem: UINavigationItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class myStudiesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,6 +103,7 @@ class myStudiesTableViewController: UITableViewController {
          * open the windows which will
          * let us create a new study
         */
+        
     }
 
 }
