@@ -20,6 +20,7 @@
 		11A071411DBEC74F00BEDFE2 /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A071401DBEC74F00BEDFE2 /* Study.swift */; };
 		11A071431DBED5C900BEDFE2 /* myStudiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A071421DBED5C900BEDFE2 /* myStudiesTableViewCell.swift */; };
 		11A071451DBED6B700BEDFE2 /* myStudiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A071441DBED6B700BEDFE2 /* myStudiesTableViewController.swift */; };
+		37486E861DCD26B000832935 /* TermsConditionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37486E851DCD26B000832935 /* TermsConditionsBuilder.swift */; };
 		376114DB1DC191EF00493C51 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376114D81DC191C600493C51 /* ResearchKit.framework */; };
 		376114DC1DC191EF00493C51 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 376114D81DC191C600493C51 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		11A071401DBEC74F00BEDFE2 /* Study.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Study.swift; sourceTree = "<group>"; };
 		11A071421DBED5C900BEDFE2 /* myStudiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myStudiesTableViewCell.swift; sourceTree = "<group>"; };
 		11A071441DBED6B700BEDFE2 /* myStudiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myStudiesTableViewController.swift; sourceTree = "<group>"; };
+		37486E851DCD26B000832935 /* TermsConditionsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsConditionsBuilder.swift; path = ../TermsConditionsBuilder.swift; sourceTree = "<group>"; };
 		376114D11DC191C600493C51 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 		11A071291DBEBCC000BEDFE2 /* Proj Insight */ = {
 			isa = PBXGroup;
 			children = (
+				37486E851DCD26B000832935 /* TermsConditionsBuilder.swift */,
 				376114D11DC191C600493C51 /* ResearchKit.xcodeproj */,
 				11A0712A1DBEBCC000BEDFE2 /* AppDelegate.swift */,
 				11A0712C1DBEBCC000BEDFE2 /* ViewController.swift */,
@@ -251,6 +254,7 @@
 				11A071411DBEC74F00BEDFE2 /* Study.swift in Sources */,
 				11A0712D1DBEBCC000BEDFE2 /* ViewController.swift in Sources */,
 				11A0713F1DBEC60800BEDFE2 /* AllStudiesTableViewCell.swift in Sources */,
+				37486E861DCD26B000832935 /* TermsConditionsBuilder.swift in Sources */,
 				11A071431DBED5C900BEDFE2 /* myStudiesTableViewCell.swift in Sources */,
 				11A071451DBED6B700BEDFE2 /* myStudiesTableViewController.swift in Sources */,
 				11A0713D1DBEC02E00BEDFE2 /* ListStudiesTableViewController.swift in Sources */,
