@@ -52,21 +52,23 @@ class SystemSound {
     }
 }
 
+
 /**
     An enum that corresponds to a row displayed in a `TaskListViewController`.
 
     Each of the tasks is composed of one or more steps giving examples of the
     types of functionality supported by the ResearchKit framework.
 */
+var inputtedDescription = ""
+var inputtedDetailedDescription = ""
+
 enum TaskListRow: Int, CustomStringConvertible {
 
-    case form = 0
-    case survey
-    case booleanQuestion
+    case booleanQuestion = 0
     case dateQuestion
     case dateTimeQuestion
-    case imageChoiceQuestion
-    case locationQuestion
+    case imageChoiceQuestion //
+    case locationQuestion       //
     case numericQuestion
     case scaleQuestion
     case textQuestion
@@ -74,16 +76,16 @@ enum TaskListRow: Int, CustomStringConvertible {
     case timeIntervalQuestion
     case timeOfDayQuestion
     case valuePickerChoiceQuestion
-    case validatedTextQuestion
-    case imageCapture
-    case videoCapture
-    case wait
+    case validatedTextQuestion  //
+    case imageCapture       //
+    case videoCapture       //
+    case wait               //
     case eligibilityTask
-    case consent
-    case accountCreation
-    case login
+    case consent                //
+    case accountCreation        //
+    case login              //
     case passcode
-    case audio
+    case audio              //
     case fitness
     case holePegTest
     case psat
@@ -96,7 +98,7 @@ enum TaskListRow: Int, CustomStringConvertible {
     case tremorTest
     case twoFingerTappingInterval
     case walkBackAndForth
-    case heightQuestion
+    case heightQuestion         //
     
     class TaskListRowSection {
         var title: String
@@ -111,12 +113,7 @@ enum TaskListRow: Int, CustomStringConvertible {
     /// Returns an array of all the task list row enum cases.
     static var sections: [ TaskListRowSection ] {
         return [
-            TaskListRowSection(title: "Surveys", rows:
-                [
-                    .form,
-                    .survey,
-                ]),
-            TaskListRowSection(title: "Survey Questions", rows:
+            TaskListRowSection(title: "Questions", rows:
                 [
                     .booleanQuestion,
                     .dateQuestion,
@@ -165,14 +162,9 @@ enum TaskListRow: Int, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .form:
-            return NSLocalizedString("Form Survey Example", comment: "")
-            
-        case .survey:
-            return NSLocalizedString("Simple Survey Example", comment: "")
             
         case .booleanQuestion:
-            return NSLocalizedString("Boolean Question", comment: "")
+            return NSLocalizedString("Yes/No Question", comment: "")    //Boolean Question
             
         case .dateQuestion:
             return NSLocalizedString("Date Question", comment: "")
@@ -208,10 +200,10 @@ enum TaskListRow: Int, CustomStringConvertible {
             return NSLocalizedString("Time of Day Question", comment: "")
             
         case .valuePickerChoiceQuestion:
-            return NSLocalizedString("Value Picker Choice Question", comment: "")
+            return NSLocalizedString("Value Picker", comment: "")
             
         case .validatedTextQuestion:
-            return NSLocalizedString("Validated Text Question", comment: "")
+            return NSLocalizedString("Validated Text", comment: "")
             
         case .imageCapture:
             return NSLocalizedString("Image Capture Step", comment: "")
@@ -223,10 +215,10 @@ enum TaskListRow: Int, CustomStringConvertible {
             return NSLocalizedString("Wait Step", comment: "")
 
         case .eligibilityTask:
-            return NSLocalizedString("Eligibility Task Example", comment: "")
+            return NSLocalizedString("Eligibility Task", comment: "")
             
         case .consent:
-            return NSLocalizedString("Consent-Obtaining Example", comment: "")
+            return NSLocalizedString("Consent-Obtaining", comment: "")
 
         case .accountCreation:
             return NSLocalizedString("Account Creation", comment: "")
@@ -278,6 +270,116 @@ enum TaskListRow: Int, CustomStringConvertible {
         }
     }
     
+    var taskType: String {
+        switch self {
+            
+        case .booleanQuestion:
+            return NSLocalizedString("Question", comment: "")    //Boolean Question
+            
+        case .dateQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .dateTimeQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .heightQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .imageChoiceQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .locationQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .numericQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .scaleQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .textQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .textChoiceQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .timeIntervalQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .timeOfDayQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .valuePickerChoiceQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .validatedTextQuestion:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .imageCapture:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .videoCapture:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .wait:
+            return NSLocalizedString("Question", comment: "")
+            
+        case .eligibilityTask:
+            return NSLocalizedString("Onboarding", comment: "")
+            
+        case .consent:
+            return NSLocalizedString("Onboarding", comment: "")
+            
+        case .accountCreation:
+            return NSLocalizedString("Onboarding", comment: "")
+            
+        case .login:
+            return NSLocalizedString("Onboarding", comment: "")
+            
+        case .passcode:
+            return NSLocalizedString("Onboarding", comment: "")
+            
+        case .audio:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .fitness:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .holePegTest:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .psat:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .reactionTime:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .shortWalk:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .spatialSpanMemory:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .timedWalk:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .toneAudiometry:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .towerOfHanoi:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .twoFingerTappingInterval:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .walkBackAndForth:
+            return NSLocalizedString("Active Tasks", comment: "")
+            
+        case .tremorTest:
+            return NSLocalizedString("Active Tasks", comment: "")
+        }
+    }
+
     // MARK: Types
 
     /**
@@ -438,11 +540,6 @@ enum TaskListRow: Int, CustomStringConvertible {
     /// Returns a new `ORKTask` that the `TaskListRow` enumeration represents.
     var representedTask: ORKTask {
         switch self {
-        case .form:
-            return formTask
-            
-        case .survey:
-            return surveyTask
             
         case .booleanQuestion:
             return booleanQuestionTask
@@ -552,69 +649,20 @@ enum TaskListRow: Int, CustomStringConvertible {
 
     // MARK: Task Creation Convenience
     
-    /**
-    This task demonstrates a form step, in which multiple items are presented
-    in a single scrollable form. This might be used for entering multi-value
-    data, like taking a blood pressure reading with separate systolic and
-    diastolic values.
-    */
-    private var formTask: ORKTask {
-        let step = ORKFormStep(identifier: String(describing:Identifier.formStep), title: exampleQuestionText, text: exampleDetailText)
-        
-        // A first field, for entering an integer.
-        let formItem01Text = NSLocalizedString("Field01", comment: "")
-        let formItem01 = ORKFormItem(identifier: String(describing:Identifier.formItem01), text: formItem01Text, answerFormat: ORKAnswerFormat.integerAnswerFormat(withUnit: nil))
-        formItem01.placeholder = NSLocalizedString("Your placeholder here", comment: "")
-        
-        // A second field, for entering a time interval.
-        let formItem02Text = NSLocalizedString("Field02", comment: "")
-        let formItem02 = ORKFormItem(identifier: String(describing:Identifier.formItem02), text: formItem02Text, answerFormat: ORKTimeIntervalAnswerFormat())
-        formItem02.placeholder = NSLocalizedString("Your placeholder here", comment: "")
-        
-        step.formItems = [
-            formItem01,
-            formItem02
-        ]
-        
-        return ORKOrderedTask(identifier: String(describing:Identifier.formTask), steps: [step])
-    }
-
-    /**
-    A task demonstrating how the ResearchKit framework can be used to present a simple
-    survey with an introduction, a question, and a conclusion.
-    */
-    private var surveyTask: ORKTask {
-        // Create the intro step.
-        let instructionStep = ORKInstructionStep(identifier: String(describing:Identifier.introStep))
-        
-        instructionStep.title = NSLocalizedString("Sample Survey", comment: "")
-        
-        instructionStep.text = exampleDescription
-        
-        // Add a question step.
-        let questionStepAnswerFormat = ORKBooleanAnswerFormat()
-        
-        let questionStepTitle = NSLocalizedString("Would you like to subscribe to our newsletter?", comment: "")
-        let questionStep = ORKQuestionStep(identifier: String(describing:Identifier.questionStep), title: questionStepTitle, answer: questionStepAnswerFormat)
-        
-        // Add a summary step.
-        let summaryStep = ORKInstructionStep(identifier: String(describing:Identifier.summaryStep))
-        summaryStep.title = NSLocalizedString("Thanks", comment: "")
-        summaryStep.text = NSLocalizedString("Thank you for participating in this sample survey.", comment: "")
-        
-        return ORKOrderedTask(identifier: String(describing:Identifier.surveyTask), steps: [
-            instructionStep,
-            questionStep,
-            summaryStep
-            ])
-    }
-
+    
+    
     /// This task presents just a single "Yes" / "No" question.
     private var booleanQuestionTask: ORKTask {
         let answerFormat = ORKBooleanAnswerFormat()
         
         // We attach an answer format to a question step to specify what controls the user sees.
-        let questionStep = ORKQuestionStep(identifier: String(describing:Identifier.booleanQuestionStep), title: exampleQuestionText, answer: answerFormat)
+        var titleText: String = ""
+        if (inputtedDescription != ""){
+            titleText = inputtedDescription
+        }else{
+            titleText = exampleDescription
+        }
+        let questionStep = ORKQuestionStep(identifier: String(describing:Identifier.booleanQuestionStep), title: titleText, answer: answerFormat)
         
         // The detail text is shown in a small font below the title.
         questionStep.text = exampleDetailText
@@ -1442,4 +1490,23 @@ enum TaskListRow: Int, CustomStringConvertible {
     private var loremIpsumLongText: String {
         return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam adhuc, meo fortasse vitio, quid ego quaeram non perspicis. Plane idem, inquit, et maxima quidem, qua fieri nulla maior potest. Quonam, inquit, modo? An potest, inquit ille, quicquam esse suavius quam nihil dolere? Cave putes quicquam esse verius. Quonam, inquit, modo?"
     }
+    
+    public func setDescription(input: String) {
+        inputtedDescription = input
+    }
+    public func getDescription() -> String {
+        return inputtedDescription
+    }
+    public func setDetailedDescription(input: String) {
+        inputtedDetailedDescription = input
+    }
+    public func getDetailedDescription() -> String {
+        return inputtedDetailedDescription
+    }
+    public func resetStrings(){
+        inputtedDescription = ""
+        inputtedDetailedDescription = ""
+    }
+
+
 }

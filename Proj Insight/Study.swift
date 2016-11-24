@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import ResearchKit
+
 
 class Study: NSObject, NSCoding {
 
@@ -17,10 +19,24 @@ class Study: NSObject, NSCoding {
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("saveStudy1")
     
+
+    var tasksArr = [Task]()
+    
     // MARK: Types
     struct PropertyKey {
         static let nameKey = "name"
     }
+    
+    
+    
+    //This is the important ones
+    func addTask(_ task: Task) {
+        tasksArr += [task]
+    }
+    func getTasks() -> [Task]{
+        return self.tasksArr
+    }
+    
     
     // MARK: Initialization
     

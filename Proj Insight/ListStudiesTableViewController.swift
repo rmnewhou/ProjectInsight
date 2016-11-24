@@ -37,7 +37,7 @@ class ListStudiesTableViewController: UITableViewController {
         super.viewDidLoad()
 
 //        /if let savedStudies = loadStudies() {
-//            if savedStudies[0].type == mealType{          // <== NEED THIS IF STATEMENT! Took awhile to figure out. Without it, the contents in table from one food type will overlap the contents of the table of another food type.
+//            if savedStudies[0].type == mealType{          
 //                mealsByType += savedMeals
 //            }else{
 //                loadSampleMeals()

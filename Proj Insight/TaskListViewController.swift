@@ -46,6 +46,9 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
     var waitStepViewController: ORKWaitStepViewController?
     var waitStepUpdateTimer: Timer?
     var waitStepProgress: CGFloat = 0.0
+    var study: Study?
+    
+    var task: Task?
     
     // MARK: Types
     
@@ -90,45 +93,53 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        
         // Present the task view controller that the user asked for.
         let taskListRow = TaskListRow.sections[(indexPath as NSIndexPath).section].rows[(indexPath as NSIndexPath).row]
+        ActivitiesConnections.sharedInstance.tempTaskListRow = taskListRow
         
-        // Create a task from the `TaskListRow` to present in the `ORKTaskViewController`.
-        let task = taskListRow.representedTask
+        //taskListRow.setDescription(input: "NEW TITLE HERE")
         
-        //Send task to the first tableView Study builder
-        //print("\n\n\n"+(task as! String)+"\n\n\n")
         
         /*
-            Passing `nil` for the `taskRunUUID` lets the task view controller
-            generate an identifier for this run of the task.
+        *   What needs to happen is this:
+        *   1) The user clicks on a cell and a UIActionSheet is brought up
+        *   2) The user has a choice between previewing the task or editing then adding one
+        *   3) If the user decides to edit, they will be brought to a screen which will ask them to input values like title and description and whatever else is needed for the task to become "fully customized" 
+        *   4) After then enter everything, the values are used instead of the example/default ones to create the tasks (located in this file)
         */
         
-        /** NOTE **
-        * This is where we would put the new view controller which would
-         * contain an add button (to add the task to the study builder
-         * and a label for what task it is
-         * and a preview button, which would take that specific task and run it...
-         * similar to what the code below would do, if it were to continue running.
-         */
         
+        //1)
+        // Could change this for a popover action alert.
+        let popUpActionSheet = UIAlertController(title: "Task Options", message: "What do you like to do?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let previewAction = UIAlertAction(title: "Preview", style: UIAlertActionStyle.default){ (ACTION) in
+            
+            let task = taskListRow.representedTask
+            let taskViewController = ORKTaskViewController(task: task, taskRun: nil)
+            taskViewController.delegate = self
+            // Assign a directory to store `taskViewController` output.
+            taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            
+            self.present(taskViewController, animated: true, completion: nil)
+        }
         
-        /*
-        let taskViewController = ORKTaskViewController(task: task, taskRun: nil)
+        let addEditAction = UIAlertAction(title: "Customize Task", style: UIAlertActionStyle.default){ (ACTION) in
+            print("Customize Task")
+            self.performSegue(withIdentifier: "edit/AddTaskSegue", sender: self)
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel){ (ACTION) in
+            print("Cancel")
+        }
 
-        // Make sure we receive events from `taskViewController`.
-        taskViewController.delegate = self
         
-        // Assign a directory to store `taskViewController` output.
-        taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
-        /*
-            We present the task directly, but it is also possible to use segues.
-            The task property of the task view controller can be set any time before
-            the task view controller is presented.
-        */
-        present(taskViewController, animated: true, completion: nil)
- */
+        popUpActionSheet.addAction(previewAction)
+        popUpActionSheet.addAction(addEditAction)
+        popUpActionSheet.addAction(cancelAction)
+        
+        self.present(popUpActionSheet, animated: true, completion: nil)
+        
     }
     
     // MARK: ORKTaskViewControllerDelegate
@@ -142,6 +153,7 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
             The actual result of the task is on the `result` property of the task
             view controller.
         */
+        
         taskResultFinishedCompletionHandler?(taskViewController.result)
 
         taskViewController.dismiss(animated: true, completion: nil)
@@ -191,6 +203,9 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
         } else {
             self.waitStepUpdateTimer?.invalidate()
         }
+    }
+    @IBAction func cancel(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
 
 }
