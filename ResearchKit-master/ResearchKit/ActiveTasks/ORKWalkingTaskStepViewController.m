@@ -64,6 +64,13 @@
         _progressView = [ORKProgressView new];
         _progressView.translatesAutoresizingMaskIntoConstraints = NO;
         
+        /*
+        [[UIView appearance] setTintColor:[UIColor colorWithRed:0.0f/255.0f
+                        green:184.0f/255.0f
+                         blue:142.0f/255.0f
+                        alpha:1.0f]];
+        //[[UIView appearance] setTintColor:[UIColor(red: 0/255, green: 184/255, blue: 142/255, alpha: 1.0)]];
+        */
 #if LAYOUT_DEBUG
         self.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
         _progressView.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.2];

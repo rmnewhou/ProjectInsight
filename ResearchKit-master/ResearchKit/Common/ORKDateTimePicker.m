@@ -52,6 +52,7 @@
     id _answer;
 }
 
+
 @synthesize pickerDelegate = _pickerDelegate;
 @synthesize answer = _answer;
 
@@ -74,7 +75,7 @@
         _pickerView = [[UIDatePicker alloc] init];
         [_pickerView addTarget:self action:@selector(valueDidChange:) forControlEvents:UIControlEventValueChanged];
         self.answerFormat = _answerFormat;
-        self.answer = _answer;
+
     }
     return _pickerView;
 }
