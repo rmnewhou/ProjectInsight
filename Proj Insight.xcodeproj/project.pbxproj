@@ -10,7 +10,6 @@
 		1125BCBA1DC065A700B4687B /* clipBoardIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125BCB71DC065A700B4687B /* clipBoardIcon.png */; };
 		1125BCBB1DC065A700B4687B /* editIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125BCB81DC065A700B4687B /* editIcon.png */; };
 		1125BCBC1DC065A700B4687B /* analyzeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125BCB91DC065A700B4687B /* analyzeIcon.png */; };
-		1147B5191DD2DD0300B9B95D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1147B5171DD2DD0300B9B95D /* Main.storyboard */; };
 		1147B51B1DD5277600B9B95D /* TaskBuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147B51A1DD5277600B9B95D /* TaskBuilderViewController.swift */; };
 		1147B51D1DD55BA500B9B95D /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147B51C1DD55BA400B9B95D /* TaskCell.swift */; };
 		1147B5241DD5697B00B9B95D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147B5231DD5697B00B9B95D /* Task.swift */; };
@@ -30,6 +29,7 @@
 		11A071411DBEC74F00BEDFE2 /* Study.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A071401DBEC74F00BEDFE2 /* Study.swift */; };
 		11A071431DBED5C900BEDFE2 /* myStudiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A071421DBED5C900BEDFE2 /* myStudiesTableViewCell.swift */; };
 		11A071451DBED6B700BEDFE2 /* myStudiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A071441DBED6B700BEDFE2 /* myStudiesTableViewController.swift */; };
+		11F6C4811DF25FAB00B86454 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11F6C47F1DF25FAB00B86454 /* Main.storyboard */; };
 		37486E861DCD26B000832935 /* TermsConditionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37486E851DCD26B000832935 /* TermsConditionsBuilder.swift */; };
 		376114DB1DC191EF00493C51 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376114D81DC191C600493C51 /* ResearchKit.framework */; };
 		376114DC1DC191EF00493C51 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 376114D81DC191C600493C51 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -77,7 +77,6 @@
 		1125BCB71DC065A700B4687B /* clipBoardIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clipBoardIcon.png; sourceTree = "<group>"; };
 		1125BCB81DC065A700B4687B /* editIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editIcon.png; sourceTree = "<group>"; };
 		1125BCB91DC065A700B4687B /* analyzeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analyzeIcon.png; sourceTree = "<group>"; };
-		1147B5181DD2DD0300B9B95D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1147B51A1DD5277600B9B95D /* TaskBuilderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskBuilderViewController.swift; sourceTree = "<group>"; };
 		1147B51C1DD55BA400B9B95D /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		1147B5231DD5697B00B9B95D /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		11A071401DBEC74F00BEDFE2 /* Study.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Study.swift; sourceTree = "<group>"; };
 		11A071421DBED5C900BEDFE2 /* myStudiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myStudiesTableViewCell.swift; sourceTree = "<group>"; };
 		11A071441DBED6B700BEDFE2 /* myStudiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myStudiesTableViewController.swift; sourceTree = "<group>"; };
+		11F6C4801DF25FAB00B86454 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37486E851DCD26B000832935 /* TermsConditionsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsConditionsBuilder.swift; path = ../TermsConditionsBuilder.swift; sourceTree = "<group>"; };
 		376114D11DC191C600493C51 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -149,9 +149,9 @@
 				115B7A5D1DCD56DC004BB8B2 /* TaskListViewController.swift */,
 				37486E851DCD26B000832935 /* TermsConditionsBuilder.swift */,
 				11A071401DBEC74F00BEDFE2 /* Study.swift */,
-				1147B5171DD2DD0300B9B95D /* Main.storyboard */,
 				1147B52B1DD6CC2E00B9B95D /* TaskControllers.swift */,
 				11A0712A1DBEBCC000BEDFE2 /* AppDelegate.swift */,
+				11F6C47F1DF25FAB00B86454 /* Main.storyboard */,
 				1147B51C1DD55BA400B9B95D /* TaskCell.swift */,
 				1147B51A1DD5277600B9B95D /* TaskBuilderViewController.swift */,
 				1147B5231DD5697B00B9B95D /* Task.swift */,
@@ -223,6 +223,7 @@
 				TargetAttributes = {
 					11A071261DBEBCC000BEDFE2 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 37TB83E3SS;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -279,7 +280,7 @@
 				1147B5281DD593C800B9B95D /* questionMarkIcon.png in Resources */,
 				1147B52A1DD594FC00B9B95D /* activityIcon.png in Resources */,
 				11A071321DBEBCC000BEDFE2 /* Assets.xcassets in Resources */,
-				1147B5191DD2DD0300B9B95D /* Main.storyboard in Resources */,
+				11F6C4811DF25FAB00B86454 /* Main.storyboard in Resources */,
 				1125BCBB1DC065A700B4687B /* editIcon.png in Resources */,
 				1125BCBA1DC065A700B4687B /* clipBoardIcon.png in Resources */,
 			);
@@ -321,20 +322,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1147B5171DD2DD0300B9B95D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1147B5181DD2DD0300B9B95D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		11A071331DBEBCC000BEDFE2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				11A071341DBEBCC000BEDFE2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		11F6C47F1DF25FAB00B86454 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				11F6C4801DF25FAB00B86454 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -436,7 +437,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 37TB83E3SS;
 				INFOPLIST_FILE = "Proj Insight/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ProjectInsight.Proj-Insight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -449,7 +452,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 37TB83E3SS;
 				INFOPLIST_FILE = "Proj Insight/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ProjectInsight.Proj-Insight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
