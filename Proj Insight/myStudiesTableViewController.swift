@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class myStudiesTableViewController: UITableViewController {
     
@@ -14,6 +15,7 @@ class myStudiesTableViewController: UITableViewController {
 
     @IBOutlet weak var NavigationItem: UINavigationItem!
     var studyNumber = 0
+    //var user: User!
     
     //var allStudies = ActivitiesConnections.sharedInstance.studyArr
 
@@ -31,6 +33,10 @@ class myStudiesTableViewController: UITableViewController {
         self.studyTableView.delegate = self
         self.studyTableView.dataSource = self
         NotificationCenter.default.addObserver(self, selector: #selector(reloadStudyTableData(_:)), name: .reload, object: nil)
+//        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+//            guard let user = user else { return }
+//            self.user = User(authData: user)
+//        }
     }
     
     func reloadStudyTableData(_ notification: Notification) {

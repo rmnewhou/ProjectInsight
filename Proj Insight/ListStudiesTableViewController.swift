@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
 
 // class which will contain 
 class ListStudiesTableViewController: UITableViewController {
 
+    @IBAction func logoutPressed(_ sender: Any) {
+        print("PRESSED\n\n\n")
+        do {
+            try FIRAuth.auth()!.signOut()
+            print("\n\nDid get here")
+            dismiss(animated: true, completion: nil)
+        } catch {
+            
+        }
+    }
     
     // MARK: Properties
     
@@ -19,6 +30,8 @@ class ListStudiesTableViewController: UITableViewController {
     var filteredStudies = [Study]()    //for when searching and need to filter results.
 //    var StudyByType = [Study]()
 //    var StudyType: String = String()
+    let usersRef = FIRDatabase.database().reference(withPath: "online")
+    var user: User!
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -36,18 +49,9 @@ class ListStudiesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        /if let savedStudies = loadStudies() {
-//            if savedStudies[0].type == mealType{          
-//                mealsByType += savedMeals
-//            }else{
-//                loadSampleMeals()
-//            }
-//        }else{
-//            // Load the sample data.
-//            loadSampleStudies()
-//        }
         loadSampleStudies()
         
+        print("\n\nHERE LIST STUDIES")
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         //searchController.extendedLayoutIncludesOpaqueBars = true;
@@ -57,7 +61,7 @@ class ListStudiesTableViewController: UITableViewController {
     }
     
     
-    func loadSampleStudies() { //Initialize foods
+    func loadSampleStudies() { //Initialize 
         let study1 = Study(name: "First Study")! // Eventually will need: Name, ID, IsPrivate, Owner (possibly)
         let study2 = Study(name: "Second Study")!
         let study3 = Study(name: "Third Study")!
