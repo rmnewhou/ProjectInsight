@@ -19,6 +19,7 @@ class ActivitiesConnections {
     var studyArr = [Study]()
     var studyCurrent = Study(name: "Test")
     var tempTaskListRow: TaskListRow? = nil
+    var allStudyArr = [Study]()
     
 
     

@@ -96,8 +96,9 @@ class myStudiesTableViewController: UITableViewController {
             let submitAction = UIAlertAction(title: "Submit", style: UIAlertActionStyle.default){ (ACTION) in
                 
                 //Save study to AllStudies...
-                
-                print("\n\nWill Submit")
+                if let indexPath = self.studyTableView.indexPathForSelectedRow{
+                    ActivitiesConnections.sharedInstance.allStudyArr.append(ActivitiesConnections.sharedInstance.studyArr[indexPath.section])
+                }
             }
             
             let editAction = UIAlertAction(title: "Edit Study", style: UIAlertActionStyle.default){ (ACTION) in

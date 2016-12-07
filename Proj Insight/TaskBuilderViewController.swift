@@ -67,40 +67,7 @@ class TaskBuilderViewController: UIViewController, UITableViewDelegate, UITableV
             self.present(alertController, animated: true, completion: nil)
         }
     
-        
-        //ActivitiesConnections.sharedInstance.studyCurrent = Study(name: "Start Over")
-        //ActivitiesConnections.sharedInstance.studyCurrent?.tasksArr.removeAll()     //THIS IS THE ISSUE!!! IT IS TAKING ALL TASKS OUT OF studyArr for some reason.
-        //ActivitiesConnections.sharedInstance.studyCurrent?.tasksArr = nil
-        
-        //func presentAlert() {
-//            let alertController = UIAlertController(title: "Study Name", message: "Please input a name for your study:", preferredStyle: .alert)
-//            
-//            let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
-//                if let field = alertController.textFields?[0] {
-//                    // store your data
-//                    UserDefaults.standard.set(field.text, forKey: "studyName")
-//                    UserDefaults.standard.synchronize()
-//                    
-//                    
-//                    NotificationCenter.default.post(name: .reload, object: nil)
-//                    self.dismiss(animated: true, completion: nil)
-//
-//                } else {
-//                    // user did not fill field
-//                }
-//            }
-//            
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
-//            
-//            alertController.addTextField { (textField) in
-//                textField.placeholder = "Study name"
-//            }
-//            
-//            alertController.addAction(confirmAction)
-//            alertController.addAction(cancelAction)
-        
-            //self.present(alertController, animated: true, completion: nil)
-        //}
+ 
         
         NotificationCenter.default.post(name: .reload, object: nil)
         
