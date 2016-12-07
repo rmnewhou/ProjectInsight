@@ -638,7 +638,12 @@ enum TaskListRow: Int, CustomStringConvertible {
         
         let questionStep1 = ORKQuestionStep(identifier: String(describing:Identifier.numericQuestionStep), title: titleText, answer: questionStep1AnswerFormat)
         
-        questionStep1.text = exampleDetailText
+        if (inputtedDetailedDescription != ""){
+            questionStep1.text = inputtedDetailedDescription
+        }else{
+            questionStep1.text = exampleDetailText
+        }
+
         questionStep1.placeholder = NSLocalizedString(unitPlaceholder, comment: "")
         
         /*

@@ -30,22 +30,81 @@ class TaskBuilderViewController: UIViewController, UITableViewDelegate, UITableV
         if (indexNumberOfStudy != -1){          //If we are just editing a previously made study
             ActivitiesConnections.sharedInstance.studyArr[indexNumberOfStudy] = ActivitiesConnections.sharedInstance.studyCurrent!
             indexNumberOfStudy = -1
+            
         }else{                                  //If we are adding a brand new study. Append to back of array
-            ActivitiesConnections.sharedInstance.studyArr.append((ActivitiesConnections.sharedInstance.studyCurrent)!)
+//            ActivitiesConnections.sharedInstance.studyArr.append((ActivitiesConnections.sharedInstance.studyCurrent)!)
+            
+            let alertController = UIAlertController(title: "Study Name", message: "Please input a name for your study:", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+                if let field = alertController.textFields?[0] {
+                    // store your data
+                    UserDefaults.standard.set(field.text, forKey: "studyName")
+                    UserDefaults.standard.synchronize()
+                    ActivitiesConnections.sharedInstance.studyCurrent?.name = field.text!
+                    
+                    NotificationCenter.default.post(name: .reload, object: nil)
+                    
+                    ActivitiesConnections.sharedInstance.studyArr.append((ActivitiesConnections.sharedInstance.studyCurrent)!)
+
+                    NotificationCenter.default.post(name: .reload, object: nil)
+                    ActivitiesConnections.sharedInstance.studyCurrent = Study(name: "Start Over")
+                    self.dismiss(animated: true, completion: nil)
+                    
+                } else {
+                    // user did not fill field
+                }
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+            
+            alertController.addTextField { (textField) in
+                textField.placeholder = "Study name"
+            }
+            
+            alertController.addAction(confirmAction)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
         }
     
         
-        print("Study array has tasks: ", ActivitiesConnections.sharedInstance.studyArr[0].getTasks().count)
-        
-        ActivitiesConnections.sharedInstance.studyCurrent = Study(name: "Start Over")
+        //ActivitiesConnections.sharedInstance.studyCurrent = Study(name: "Start Over")
         //ActivitiesConnections.sharedInstance.studyCurrent?.tasksArr.removeAll()     //THIS IS THE ISSUE!!! IT IS TAKING ALL TASKS OUT OF studyArr for some reason.
         //ActivitiesConnections.sharedInstance.studyCurrent?.tasksArr = nil
         
-         print("Study array has tasks: ", ActivitiesConnections.sharedInstance.studyArr[0].getTasks().count)
+        //func presentAlert() {
+//            let alertController = UIAlertController(title: "Study Name", message: "Please input a name for your study:", preferredStyle: .alert)
+//            
+//            let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+//                if let field = alertController.textFields?[0] {
+//                    // store your data
+//                    UserDefaults.standard.set(field.text, forKey: "studyName")
+//                    UserDefaults.standard.synchronize()
+//                    
+//                    
+//                    NotificationCenter.default.post(name: .reload, object: nil)
+//                    self.dismiss(animated: true, completion: nil)
+//
+//                } else {
+//                    // user did not fill field
+//                }
+//            }
+//            
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+//            
+//            alertController.addTextField { (textField) in
+//                textField.placeholder = "Study name"
+//            }
+//            
+//            alertController.addAction(confirmAction)
+//            alertController.addAction(cancelAction)
+        
+            //self.present(alertController, animated: true, completion: nil)
+        //}
         
         NotificationCenter.default.post(name: .reload, object: nil)
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func unwindToTaskBuilder(_ sender: UIStoryboardSegue) {
@@ -187,6 +246,10 @@ class TaskBuilderViewController: UIViewController, UITableViewDelegate, UITableV
          view controller.
          */
         taskResultFinishedCompletionHandler?(taskViewController.result)
+        
+        //Get results 
+        
+        //taskViewController.result.res
         taskViewController.dismiss(animated: true, completion: nil)
     }
     

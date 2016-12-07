@@ -13,7 +13,8 @@ import Firebase
 // class which will contain 
 class ListStudiesTableViewController: UITableViewController {
 
-    @IBAction func logoutPressed(_ sender: Any) {
+    
+    @IBAction func signOutPressed(_ sender: Any) {
         print("PRESSED\n\n\n")
         do {
             try FIRAuth.auth()!.signOut()
@@ -22,6 +23,7 @@ class ListStudiesTableViewController: UITableViewController {
         } catch {
             
         }
+
     }
     
     // MARK: Properties
@@ -158,16 +160,10 @@ class ListStudiesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    // NSCoding
-    func saveStudies() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(studies, toFile: Study.ArchiveURL.path)
-        if !isSuccessfulSave {
-            print("Failed to save studies...")
-        }
-    }
-    func loadStudies() -> [Study]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Study.ArchiveURL.path) as? [Study]
-    }
+    
+    
+    
+
 
 }
 extension ListStudiesTableViewController: UISearchResultsUpdating{

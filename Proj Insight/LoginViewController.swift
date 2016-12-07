@@ -26,6 +26,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginSelected(_ sender: Any) {
         FIRAuth.auth()!.signIn(withEmail: textFieldLoginEmail.text!,
                                password: textFieldLoginPassword.text!)
+        
+        textFieldLoginEmail.text = ""
+        textFieldLoginPassword.text = ""
         }
     @IBAction func signUpSelected(_ sender: Any) {
         let alert = UIAlertController(title: "Register",

@@ -102,7 +102,7 @@ class PlaceholderUnits: UIViewController, UITextFieldDelegate {
         }
         
         //Assign the new text in this task to be the text of what was entered
-        taskListRow?.setTitle(input: detailsTextField.text!)
+        taskListRow?.setTitle(input: titleTextField.text!)
         taskListRow?.setDetailedDescription(input: detailsTextField.text!)
         taskListRow?.setUnitPlaceholder(input: placeholderTextField.text!)
         taskListRow?.setUnitText(input: unitsTextField.text!)

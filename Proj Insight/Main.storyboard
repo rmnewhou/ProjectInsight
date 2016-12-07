@@ -49,14 +49,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="All Studies Available" id="qQ8-5Z-0a5">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="rQL-t6-w8j">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5TQ-Ar-PFx">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign Out"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="qnh-oh-9mL">
                             <connections>
-                                <action selector="logoutPressed:" destination="R4F-x4-rR7" id="Rup-sL-3Ki"/>
+                                <action selector="signOutPressed:" destination="R4F-x4-rR7" id="qG9-l9-Ey2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -146,13 +141,6 @@
                                     <outlet property="delegate" destination="x4z-oT-0tf" id="mbl-JL-p5I"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Study Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vBj-Rp-H3M">
-                                <rect key="frame" x="65" y="72" width="244" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -626,7 +614,7 @@
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="SEj-XH-pJV">
                             <connections>
                                 <action selector="addStudy:" destination="hgG-Ox-eaO" id="qOL-fW-9JJ"/>
-                                <segue destination="SdB-Zg-fDy" kind="show" id="vxg-fF-RI3"/>
+                                <segue destination="SdB-Zg-fDy" kind="show" identifier="addStudySegue" id="vxg-fF-RI3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -824,7 +812,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZO2-fV-fgM">
                                 <rect key="frame" x="70" y="408" width="235" height="30"/>
@@ -1079,6 +1067,6 @@
         <image name="editIcon.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sVB-ex-E5X"/>
+        <segue reference="vxg-fF-RI3"/>
     </inferredMetricsTieBreakers>
 </document>
