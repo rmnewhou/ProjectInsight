@@ -65,6 +65,7 @@ var inputtedTitle = ""
 var inputtedUnitPlaceholder = ""
 var inputtedUnitText = ""
 var inputtedChoicesArray = [String]()
+var studystep: ORKQuestionStep?
 
 enum TaskListRow: Int, CustomStringConvertible {
 
@@ -1039,6 +1040,7 @@ enum TaskListRow: Int, CustomStringConvertible {
             eligibleStep
             ])
         
+        /*
         // Build navigation rules.
         var resultSelector = ORKResultSelector(stepIdentifier: String(describing:Identifier.eligibilityFormStep), resultIdentifier: String(describing:Identifier.eligibilityFormItem01))
         let predicateFormItem01 = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: "Yes" as NSCoding & NSCopying & NSObjectProtocol)
@@ -1057,7 +1059,7 @@ enum TaskListRow: Int, CustomStringConvertible {
         // Add end direct rules to skip unneeded steps
         let directRule = ORKDirectStepNavigationRule(destinationStepIdentifier: ORKNullStepIdentifier)
         eligibilityTask.setNavigationRule(directRule, forTriggerStepIdentifier:String(describing:Identifier.eligibilityIneligibleStep))
-        
+        */
         return eligibilityTask
     }
     

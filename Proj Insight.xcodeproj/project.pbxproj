@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110354BE1DF8AEBA00551D30 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110354BD1DF8AEBA00551D30 /* DashboardViewController.swift */; };
+		110354C21DF8AECD00551D30 /* PieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110354C11DF8AECD00551D30 /* PieChartDataSource.swift */; };
 		1125BCBA1DC065A700B4687B /* clipBoardIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125BCB71DC065A700B4687B /* clipBoardIcon.png */; };
 		1125BCBB1DC065A700B4687B /* editIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125BCB81DC065A700B4687B /* editIcon.png */; };
 		1125BCBC1DC065A700B4687B /* analyzeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125BCB91DC065A700B4687B /* analyzeIcon.png */; };
@@ -79,6 +81,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		110354BD1DF8AEBA00551D30 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		110354C11DF8AECD00551D30 /* PieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartDataSource.swift; sourceTree = "<group>"; };
 		1125BCB71DC065A700B4687B /* clipBoardIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clipBoardIcon.png; sourceTree = "<group>"; };
 		1125BCB81DC065A700B4687B /* editIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editIcon.png; sourceTree = "<group>"; };
 		1125BCB91DC065A700B4687B /* analyzeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analyzeIcon.png; sourceTree = "<group>"; };
@@ -178,8 +182,10 @@
 				11A0713C1DBEC02E00BEDFE2 /* ListStudiesTableViewController.swift */,
 				11A0713E1DBEC60800BEDFE2 /* AllStudiesTableViewCell.swift */,
 				11A071441DBED6B700BEDFE2 /* myStudiesTableViewController.swift */,
-				11A071421DBED5C900BEDFE2 /* myStudiesTableViewCell.swift */,
 				11A0712C1DBEBCC000BEDFE2 /* ViewController.swift */,
+				11A071421DBED5C900BEDFE2 /* myStudiesTableViewCell.swift */,
+				110354BD1DF8AEBA00551D30 /* DashboardViewController.swift */,
+				110354C11DF8AECD00551D30 /* PieChartDataSource.swift */,
 				376114D11DC191C600493C51 /* ResearchKit.xcodeproj */,
 				11A071311DBEBCC000BEDFE2 /* Assets.xcassets */,
 				11A071331DBEBCC000BEDFE2 /* LaunchScreen.storyboard */,
@@ -400,11 +406,13 @@
 				115B7A5E1DCD56DD004BB8B2 /* TaskListRow.swift in Sources */,
 				1147B51D1DD55BA500B9B95D /* TaskCell.swift in Sources */,
 				1147B52C1DD6CC2E00B9B95D /* TaskControllers.swift in Sources */,
+				110354C21DF8AECD00551D30 /* PieChartDataSource.swift in Sources */,
 				11A0713D1DBEC02E00BEDFE2 /* ListStudiesTableViewController.swift in Sources */,
 				11A0712B1DBEBCC000BEDFE2 /* AppDelegate.swift in Sources */,
 				11F6C4871DF49A8300B86454 /* LoginViewController.swift in Sources */,
 				115B7A651DD14BB8004BB8B2 /* ActivitiesConnections.swift in Sources */,
 				115B7A5F1DCD56DD004BB8B2 /* TaskListViewController.swift in Sources */,
+				110354BE1DF8AEBA00551D30 /* DashboardViewController.swift in Sources */,
 				1147B51B1DD5277600B9B95D /* TaskBuilderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

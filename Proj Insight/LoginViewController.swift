@@ -31,8 +31,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textFieldLoginPassword.text = ""
         }
     @IBAction func signUpSelected(_ sender: Any) {
-        let alert = UIAlertController(title: "Register",
-                                      message: "Register",
+        let alert = UIAlertController(title: "Sign Up",
+                                      message: "Please enter information below",
                                       preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Save",

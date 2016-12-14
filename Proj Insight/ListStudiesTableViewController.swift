@@ -27,7 +27,7 @@ class ListStudiesTableViewController: UITableViewController, ORKTaskViewControll
     
     // MARK: Properties
     var runthrough: Int = 0
-
+    var studyCompletedName: String = ""
     
     var studyToDoArr = [Task]()
     var studies = [Study]()
@@ -126,7 +126,7 @@ class ListStudiesTableViewController: UITableViewController, ORKTaskViewControll
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true) // REMEMBER
-
+        studyCompletedName = ActivitiesConnections.sharedInstance.allStudyArr[indexPath.row].name
         studyToDoArr = ActivitiesConnections.sharedInstance.allStudyArr[indexPath.row].getTasks()
         // Create the taskViewControlled based on the task that we have stored in our studyCurrent array.
         let taskViewController = ORKTaskViewController(task: studyToDoArr[runthrough].task, taskRun: nil)
@@ -134,7 +134,47 @@ class ListStudiesTableViewController: UITableViewController, ORKTaskViewControll
         // Assign a directory to store `taskViewController` output.
         taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
-        present(taskViewController, animated: true, completion: nil)
+        
+        let popUpActionSheet = UIAlertController(title: "Study Options", message: "What do you like to do?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let participateAction = UIAlertAction(title: "Participate", style: UIAlertActionStyle.default){ (ACTION) in
+            self.present(taskViewController, animated: true, completion: nil)
+        }
+        
+        let infoAction = UIAlertAction(title: "Information", style: UIAlertActionStyle.default){ (ACTION) in
+            // Show description of this particular study
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel){ (ACTION) in
+            print("Cancel")
+        }
+        
+        
+        popUpActionSheet.addAction(participateAction)
+        popUpActionSheet.addAction(infoAction)
+        popUpActionSheet.addAction(cancelAction)
+        
+        self.present(popUpActionSheet, animated: true, completion: nil)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        tableView.deselectRow(at: indexPath, animated: true) // REMEMBER
+//        studyCompletedName = ActivitiesConnections.sharedInstance.allStudyArr[indexPath.row].name
+//        studyToDoArr = ActivitiesConnections.sharedInstance.allStudyArr[indexPath.row].getTasks()
+//        // Create the taskViewControlled based on the task that we have stored in our studyCurrent array.
+//        let taskViewController = ORKTaskViewController(task: studyToDoArr[runthrough].task, taskRun: nil)
+//        taskViewController.delegate = self
+//        // Assign a directory to store `taskViewController` output.
+//        taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        
+//        present(taskViewController, animated: true, completion: nil)
         
     }
 
@@ -187,6 +227,48 @@ class ListStudiesTableViewController: UITableViewController, ORKTaskViewControll
             
             taskViewController.dismiss(animated: true, completion: nil)
             runthrough += 1
+            
+            
+            let taskResult : ORKTaskResult = taskViewController.result
+            var taskResultValue = taskResult
+                if let formStepResult = taskResultValue.stepResult(forStepIdentifier: "booleanQuestionStep"), let formItemResults = formStepResult.results
+                {
+                    //2
+                    for result in formItemResults
+                    {
+                        //3
+                        switch result
+                        {
+                        case let booleanResult as ORKBooleanQuestionResult:
+                            if booleanResult.booleanAnswer != nil
+                            {
+                                
+                                let answerString = booleanResult.booleanAnswer!.boolValue ? "1" : "0"
+                                
+                                if (answerString == "1"){
+                                    ActivitiesConnections.sharedInstance.booleanResultsArray[0] += 1
+                                }else{
+                                    ActivitiesConnections.sharedInstance.booleanResultsArray[1] += 1
+                                }
+                                print("Answer to \(booleanResult.identifier) is \(answerString)")
+                            }
+                            else
+                            {
+                                print("\(booleanResult.identifier) was skipped")
+                            }
+                        case let numericResult as ORKNumericQuestionResult:
+                            if numericResult.numericAnswer != nil
+                            {
+                                print("Answer to \(numericResult.identifier) is \(numericResult.numericAnswer!)")
+                            }
+                            else
+                            {
+                                print("\(numericResult.identifier) was skipped")
+                            }
+                        default: break
+                        }
+                    }
+                }
             // Create the taskViewControlled based on the task that we have stored in our studyCurrent array.
             if(runthrough < studyToDoArr.count){
                 let taskViewController = ORKTaskViewController(task: studyToDoArr[runthrough].task, taskRun: nil)
@@ -194,9 +276,19 @@ class ListStudiesTableViewController: UITableViewController, ORKTaskViewControll
                 // Assign a directory to store `taskViewController` output.
                 taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
                 
+//                let taskResult : ORKTaskResult = taskViewController.result
+//                print(taskResult)
+                
                 present(taskViewController, animated: true, completion: nil)
             }else{
                 runthrough = 0
+                let alert = UIAlertController(title: "Study Completed!", message: "Thank you for completing the \(studyCompletedName) study.", preferredStyle: UIAlertControllerStyle.alert)
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                //self.tableView.deselectRow(at: self.index!, animated: true)
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
             }
             
         }

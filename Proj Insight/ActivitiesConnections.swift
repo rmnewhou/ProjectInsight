@@ -20,7 +20,8 @@ class ActivitiesConnections {
     var studyCurrent = Study(name: "Test")
     var tempTaskListRow: TaskListRow? = nil
     var allStudyArr = [Study]()
-    
+    var booleanResultsArray: [Int] = [0,0]
+
 
     
 }
