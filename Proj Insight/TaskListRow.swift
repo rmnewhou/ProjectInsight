@@ -1069,8 +1069,8 @@ enum TaskListRow: Int, CustomStringConvertible {
         */
         let visualConsentStep = ORKVisualConsentStep(identifier: String(describing:Identifier.visualConsentStep), document: consentDocument)
         
-        let investigatorShortDescription = NSLocalizedString("Institution", comment: "")
-        let investigatorLongDescription = NSLocalizedString("Institution and its partners", comment: "")
+        let investigatorShortDescription = NSLocalizedString("Insight", comment: "")
+        let investigatorLongDescription = NSLocalizedString("Insight and its partners", comment: "")
         let localizedLearnMoreHTMLContent = NSLocalizedString("Your sharing learn more content here.", comment: "")
         
         /*
@@ -1079,7 +1079,9 @@ enum TaskListRow: Int, CustomStringConvertible {
         explicit permission from the participant. Use the consent sharing step
         for this.
         */
-        let sharingConsentStep = ORKConsentSharingStep(identifier: String(describing:Identifier.consentSharingStep), investigatorShortDescription: investigatorShortDescription, investigatorLongDescription: investigatorLongDescription, localizedLearnMoreHTMLContent: localizedLearnMoreHTMLContent)
+        let sharingConsentStep = ORKConsentSharingStep(identifier: String(describing:Identifier.consentSharingStep), investigatorShortDescription: investigatorShortDescription,
+            investigatorLongDescription: investigatorLongDescription,
+            localizedLearnMoreHTMLContent: localizedLearnMoreHTMLContent)
         
         /*
         After the visual presentation, the consent review step displays
@@ -1281,7 +1283,7 @@ enum TaskListRow: Int, CustomStringConvertible {
           
             This signature is only used for the generated PDF.
         */
-        let signatureImage = UIImage(named: "signature")!
+        /*let signatureImage = UIImage(named: "signature")!
         let investigatorSignatureTitle = NSLocalizedString("Investigator", comment: "")
         let investigatorSignatureGivenName = NSLocalizedString("Jonny", comment: "")
         let investigatorSignatureFamilyName = NSLocalizedString("Appleseed", comment: "")
@@ -1290,7 +1292,7 @@ enum TaskListRow: Int, CustomStringConvertible {
         let investigatorSignature = ORKConsentSignature(forPersonWithTitle: investigatorSignatureTitle, dateFormatString: nil, identifier: String(describing:Identifier.consentDocumentInvestigatorSignature), givenName: investigatorSignatureGivenName, familyName: investigatorSignatureFamilyName, signatureImage: signatureImage, dateString: investigatorSignatureDateString)
         
         consentDocument.addSignature(investigatorSignature)
-        
+        */
         /* 
             This is the HTML content for the "Learn More" page for each consent
             section. In a real consent, this would be your content, and you would
@@ -1299,7 +1301,7 @@ enum TaskListRow: Int, CustomStringConvertible {
             If your content is just text, you can use the `content` property
             instead of the `htmlContent` property of `ORKConsentSection`.
         */
-        let htmlContentString = "<ul><li>Lorem</li><li>ipsum</li><li>dolor</li></ul><p>\(loremIpsumLongText)</p><p>\(loremIpsumMediumText)</p>"
+        /*let htmlContentString = "<ul><li>Lorem</li><li>ipsum</li><li>dolor</li></ul><p>\(loremIpsumLongText)</p><p>\(loremIpsumMediumText)</p>"*/
         
         /*
             These are all the consent section types that have pre-defined animations
@@ -1328,12 +1330,12 @@ enum TaskListRow: Int, CustomStringConvertible {
             
             consentSection.summary = loremIpsumShortText
             
-            if contentSectionType == .overview {
+           /* if contentSectionType == .overview {
                 consentSection.htmlContent = htmlContentString
-            }
-            else {
+            }*/
+            //else {
                 consentSection.content = loremIpsumLongText
-            }
+            //}
             
             return consentSection
         }
@@ -1342,12 +1344,13 @@ enum TaskListRow: Int, CustomStringConvertible {
             This is an example of a section that is only in the review document
             or only in the generated PDF, and is not displayed in `ORKVisualConsentStep`.
         */
-        let consentSection = ORKConsentSection(type: .onlyInDocument)
+       /* let consentSection = ORKConsentSection(type: .onlyInDocument)
         consentSection.summary = NSLocalizedString(".OnlyInDocument Scene Summary", comment: "")
         consentSection.title = NSLocalizedString(".OnlyInDocument Scene", comment: "")
         consentSection.content = loremIpsumLongText
-        
+ 
         consentSections += [consentSection]
+    */
         
         // Set the sections on the document after they've been created.
         consentDocument.sections = consentSections

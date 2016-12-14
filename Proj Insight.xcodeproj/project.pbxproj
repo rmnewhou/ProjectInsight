@@ -38,6 +38,8 @@
 		37486E861DCD26B000832935 /* TermsConditionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37486E851DCD26B000832935 /* TermsConditionsBuilder.swift */; };
 		376114DB1DC191EF00493C51 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376114D81DC191C600493C51 /* ResearchKit.framework */; };
 		376114DC1DC191EF00493C51 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 376114D81DC191C600493C51 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		378254AE1E00FBC300F810E3 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378254AD1E00FBC300F810E3 /* ConsentViewController.swift */; };
+		378A88731DF8AB4900A17BC6 /* ConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A88721DF8AB4900A17BC6 /* ConsentDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		11F6C4861DF49A8300B86454 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		37486E851DCD26B000832935 /* TermsConditionsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsConditionsBuilder.swift; path = ../TermsConditionsBuilder.swift; sourceTree = "<group>"; };
 		376114D11DC191C600493C51 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		378254AD1E00FBC300F810E3 /* ConsentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
+		378A88721DF8AB4900A17BC6 /* ConsentDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentDocument.swift; sourceTree = "<group>"; };
 		4432E8EADD4644FE939F162C /* Pods-Proj Insight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proj Insight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proj Insight/Pods-Proj Insight.debug.xcconfig"; sourceTree = "<group>"; };
 		519ECA117D8CC39B38ECF4E3 /* Pods_Proj_Insight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proj_Insight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15DD163CF9F830DC4D98E35 /* Pods-Proj Insight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proj Insight.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proj Insight/Pods-Proj Insight.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				11A071361DBEBCC000BEDFE2 /* Info.plist */,
 				11A071491DC0626100BEDFE2 /* Icon Images */,
 				11DF3BA81DF4D38C00468A83 /* User.swift */,
+				378A88721DF8AB4900A17BC6 /* ConsentDocument.swift */,
+				378254AD1E00FBC300F810E3 /* ConsentViewController.swift */,
 			);
 			path = "Proj Insight";
 			sourceTree = "<group>";
@@ -390,10 +396,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				11A071411DBEC74F00BEDFE2 /* Study.swift in Sources */,
+				378A88731DF8AB4900A17BC6 /* ConsentDocument.swift in Sources */,
 				11A0712D1DBEBCC000BEDFE2 /* ViewController.swift in Sources */,
 				11A0713F1DBEC60800BEDFE2 /* AllStudiesTableViewCell.swift in Sources */,
 				37486E861DCD26B000832935 /* TermsConditionsBuilder.swift in Sources */,
 				11A071431DBED5C900BEDFE2 /* myStudiesTableViewCell.swift in Sources */,
+				378254AE1E00FBC300F810E3 /* ConsentViewController.swift in Sources */,
 				11A071451DBED6B700BEDFE2 /* myStudiesTableViewController.swift in Sources */,
 				1147B5241DD5697B00B9B95D /* Task.swift in Sources */,
 				11DF3BA91DF4D38C00468A83 /* User.swift in Sources */,
