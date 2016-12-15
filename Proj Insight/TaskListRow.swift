@@ -1280,11 +1280,7 @@ enum TaskListRow: Int, CustomStringConvertible {
     public func getMaxValue() -> Int {
         return maxValue
     }
-    
-
-
-
-    
+   
     public func resetStrings(){
         inputtedDescription = ""
         inputtedDetailedDescription = ""

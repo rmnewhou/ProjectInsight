@@ -301,4 +301,20 @@ class ScaleQuestion: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
 }
+class ConsentTask: UIViewController, UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
 
