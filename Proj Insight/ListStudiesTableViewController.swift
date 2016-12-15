@@ -7,18 +7,34 @@
 //
 
 import UIKit
+import Firebase
+import ResearchKit
 
 
 // class which will contain 
-class ListStudiesTableViewController: UITableViewController {
+class ListStudiesTableViewController: UITableViewController, ORKTaskViewControllerDelegate{
+  
+    
+    @IBAction func signOutPressed(_ sender: Any) {
+        do {
+            try FIRAuth.auth()!.signOut()
+            dismiss(animated: true, completion: nil)
+        } catch {
+            
+        }
 
+    }
     
     // MARK: Properties
+    var runthrough: Int = 0
+    var studyCompletedName: String = ""
     
+    var studyToDoArr = [Task]()
     var studies = [Study]()
     var filteredStudies = [Study]()    //for when searching and need to filter results.
-//    var StudyByType = [Study]()
-//    var StudyType: String = String()
+
+    let usersRef = FIRDatabase.database().reference(withPath: "online")
+    var user: User!
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -35,34 +51,32 @@ class ListStudiesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        /if let savedStudies = loadStudies() {
-//            if savedStudies[0].type == mealType{          
-//                mealsByType += savedMeals
-//            }else{
-//                loadSampleMeals()
-//            }
-//        }else{
-//            // Load the sample data.
-//            loadSampleStudies()
-//        }
-        loadSampleStudies()
-        
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         //searchController.extendedLayoutIncludesOpaqueBars = true;
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-
+        
+        refreshControl = UIRefreshControl()
+        refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl!.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl!)
+        
+        loadStudies()
+    }
+    func refresh(sender:AnyObject) {
+        loadStudies()
     }
     
     
-    func loadSampleStudies() { //Initialize foods
-        let study1 = Study(name: "First Study")! // Eventually will need: Name, ID, IsPrivate, Owner (possibly)
-        let study2 = Study(name: "Second Study")!
-        let study3 = Study(name: "Third Study")!
-        let study4 = Study(name: "Fourth Study")!
-        studies += [study1, study2, study3, study4]
+    func loadStudies() { //Initialize
+        studies = ActivitiesConnections.sharedInstance.allStudyArr
+        self.tableView.reloadData()
+
+        if (self.refreshControl?.isRefreshing)!
+        {
+            self.refreshControl?.endRefreshing()
+        }
     }
 
     
@@ -110,6 +124,60 @@ class ListStudiesTableViewController: UITableViewController {
     return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true) // REMEMBER
+        studyCompletedName = ActivitiesConnections.sharedInstance.allStudyArr[indexPath.row].name
+        studyToDoArr = ActivitiesConnections.sharedInstance.allStudyArr[indexPath.row].getTasks()
+        // Create the taskViewControlled based on the task that we have stored in our studyCurrent array.
+        let taskViewController = ORKTaskViewController(task: studyToDoArr[runthrough].task, taskRun: nil)
+        taskViewController.delegate = self
+        // Assign a directory to store `taskViewController` output.
+        taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        
+        let popUpActionSheet = UIAlertController(title: "Study Options", message: "What do you like to do?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let participateAction = UIAlertAction(title: "Participate", style: UIAlertActionStyle.default){ (ACTION) in
+            self.present(taskViewController, animated: true, completion: nil)
+        }
+        
+        let infoAction = UIAlertAction(title: "Information", style: UIAlertActionStyle.default){ (ACTION) in
+            // Show description of this particular study
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel){ (ACTION) in
+            print("Cancel")
+        }
+        
+        
+        popUpActionSheet.addAction(participateAction)
+        popUpActionSheet.addAction(infoAction)
+        popUpActionSheet.addAction(cancelAction)
+        
+        self.present(popUpActionSheet, animated: true, completion: nil)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        tableView.deselectRow(at: indexPath, animated: true) // REMEMBER
+//        studyCompletedName = ActivitiesConnections.sharedInstance.allStudyArr[indexPath.row].name
+//        studyToDoArr = ActivitiesConnections.sharedInstance.allStudyArr[indexPath.row].getTasks()
+//        // Create the taskViewControlled based on the task that we have stored in our studyCurrent array.
+//        let taskViewController = ORKTaskViewController(task: studyToDoArr[runthrough].task, taskRun: nil)
+//        taskViewController.delegate = self
+//        // Assign a directory to store `taskViewController` output.
+//        taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        
+//        present(taskViewController, animated: true, completion: nil)
+        
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -154,17 +222,76 @@ class ListStudiesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    // NSCoding
-    func saveStudies() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(studies, toFile: Study.ArchiveURL.path)
-        if !isSuccessfulSave {
-            print("Failed to save studies...")
+        public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        
+            
+            taskViewController.dismiss(animated: true, completion: nil)
+            runthrough += 1
+            
+            
+            let taskResult : ORKTaskResult = taskViewController.result
+            var taskResultValue = taskResult
+                if let formStepResult = taskResultValue.stepResult(forStepIdentifier: "booleanQuestionStep"), let formItemResults = formStepResult.results
+                {
+                    //2
+                    for result in formItemResults
+                    {
+                        //3
+                        switch result
+                        {
+                        case let booleanResult as ORKBooleanQuestionResult:
+                            if booleanResult.booleanAnswer != nil
+                            {
+                                
+                                let answerString = booleanResult.booleanAnswer!.boolValue ? "1" : "0"
+                                
+                                if (answerString == "1"){
+                                    ActivitiesConnections.sharedInstance.booleanResultsArray[0] += 1
+                                }else{
+                                    ActivitiesConnections.sharedInstance.booleanResultsArray[1] += 1
+                                }
+                                print("Answer to \(booleanResult.identifier) is \(answerString)")
+                            }
+                            else
+                            {
+                                print("\(booleanResult.identifier) was skipped")
+                            }
+                        case let numericResult as ORKNumericQuestionResult:
+                            if numericResult.numericAnswer != nil
+                            {
+                                print("Answer to \(numericResult.identifier) is \(numericResult.numericAnswer!)")
+                            }
+                            else
+                            {
+                                print("\(numericResult.identifier) was skipped")
+                            }
+                        default: break
+                        }
+                    }
+                }
+            // Create the taskViewControlled based on the task that we have stored in our studyCurrent array.
+            if(runthrough < studyToDoArr.count){
+                let taskViewController = ORKTaskViewController(task: studyToDoArr[runthrough].task, taskRun: nil)
+                taskViewController.delegate = self
+                // Assign a directory to store `taskViewController` output.
+                taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                
+//                let taskResult : ORKTaskResult = taskViewController.result
+//                print(taskResult)
+                
+                present(taskViewController, animated: true, completion: nil)
+            }else{
+                runthrough = 0
+                let alert = UIAlertController(title: "Study Completed!", message: "Thank you for completing the \(studyCompletedName) study.", preferredStyle: UIAlertControllerStyle.alert)
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                //self.tableView.deselectRow(at: self.index!, animated: true)
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+            }
+            
         }
-    }
-    func loadStudies() -> [Study]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Study.ArchiveURL.path) as? [Study]
-    }
-
 }
 extension ListStudiesTableViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
