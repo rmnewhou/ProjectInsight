@@ -122,27 +122,49 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
         }
         
         let addEditAction = UIAlertAction(title: "Customize Task", style: UIAlertActionStyle.default){ (ACTION) in
-            if indexPath.row == 0 /*boolean Question*/          ||
-                indexPath.row == 1 /*Date Question*/            ||
-                indexPath.row == 2 /*Date & Time Question*/     ||
-                indexPath.row == 5 /*Text Question*/            ||
-                indexPath.row == 7 /*Time Interval Question*/   ||
-                indexPath.row == 8 /*Time of Day Question*/{
-                
-                self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
-                
-            }else if indexPath.row == 3 /*Numeric Question*/{
-                self.performSegue(withIdentifier: "ValuesAndPlaceholders", sender: self)
-            }else if indexPath.row == 6 /* Text Choice Question*/||
-                        indexPath.row == 9/*Multiple choices Question*/{
-                self.performSegue(withIdentifier: "MultipleChoiceSegue", sender: self)
-            }else if indexPath.row == 4 /* Scale Question*/{
-                self.performSegue(withIdentifier: "ScaleQuestionSegue", sender: self)
+            if (indexPath.section == 0){
+                if indexPath.row == 0 /*boolean Question*/          ||
+                    indexPath.row == 1 /*Date Question*/            ||
+                    indexPath.row == 2 /*Date & Time Question*/     ||
+                    indexPath.row == 5 /*Text Question*/            ||
+                    indexPath.row == 7 /*Time Interval Question*/   ||
+                    indexPath.row == 8 /*Time of Day Question*/{
+                    self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
+                }else if indexPath.row == 3 /*Numeric Question*/{
+                    self.performSegue(withIdentifier: "ValuesAndPlaceholders", sender: self)
+                }else if indexPath.row == 6 /* Text Choice Question*/||
+                    indexPath.row == 9 /*Multiple choices Question*/{
+                    self.performSegue(withIdentifier: "MultipleChoiceSegue", sender: self)
+                }else if indexPath.row == 4 /* Scale Question*/{
+                    self.performSegue(withIdentifier: "ScaleQuestionSegue", sender: self)
+                }else{
+                    //This is the default one right now
+                    self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
+                }
+            }else if (indexPath.section == 1){
+                if indexPath.row == 0 /*Consent Question*/{
+                    self.performSegue(withIdentifier: "ConsentSegue", sender: self)
+                }
             }else{
-                //This is the default one right now
-                self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
+                // Active tasks section
+                if indexPath.row == 0 /* Fitness Check */           ||
+                    indexPath.row == 1 /* Hole Peg Test */          ||
+                    indexPath.row == 2 /* PSAT */                   ||
+                    indexPath.row == 3 /* Reaction Time */          ||
+                    indexPath.row == 4 /* Short Walk */             ||
+                    indexPath.row == 5 /* Spatial Span Memory */    ||
+                    indexPath.row == 6 /* Timed Walk */             ||
+                    indexPath.row == 7 /* Tone Audiometry */        ||
+                    indexPath.row == 8 /* Tower of Hanoi */         ||
+                    indexPath.row == 9 /* Tremor Test */            ||
+                    indexPath.row == 10 /* Two Finger Tap */        ||
+                    indexPath.row == 11 /* Walk back and forth */    {
+                    self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
+                }else{
+                    //This is the default one right now
+                    self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
+                }
             }
-            
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel){ (ACTION) in
             print("Cancel")

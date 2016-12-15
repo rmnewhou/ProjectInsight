@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RUi-Xj-ebA" id="r85-n1-K8n">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXx-mC-X9k">
@@ -82,7 +82,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2EB-vT-gwy" id="Yd3-wU-l3x">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -93,7 +93,7 @@
                                         <rect key="frame" x="0.0" y="88" width="343" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="apf-DP-7lM" id="gcz-nC-CF5">
-                                            <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lz1-cQ-fye">
@@ -185,7 +185,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WhI-z6-isi" id="BL3-1I-65C">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -208,6 +208,7 @@
                         <segue destination="b2m-uX-SEc" kind="show" identifier="ValuesAndPlaceholders" id="pJl-fo-x7z"/>
                         <segue destination="TAx-BL-3WI" kind="show" identifier="MultipleChoiceSegue" id="oCz-fy-vKp"/>
                         <segue destination="ZRc-Eq-4yN" kind="show" identifier="ScaleQuestionSegue" id="jjY-XU-uHv"/>
+                        <segue destination="5Ys-9f-f3P" kind="show" identifier="ConsentSegue" id="5iR-Ur-L37"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGY-O5-BpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -281,7 +282,7 @@
             </objects>
             <point key="canvasLocation" x="8317.5" y="1241.1971830985915"/>
         </scene>
-        <!--Date Picker Question-->
+        <!--Customize Task-->
         <scene sceneID="IzV-aK-sBe">
             <objects>
                 <viewController id="UtK-F8-WPb" customClass="datePickerQuestion" customModule="Proj_Insight" customModuleProvider="target" sceneMemberID="viewController">
@@ -331,7 +332,7 @@
                             <constraint firstItem="h4z-EX-wr9" firstAttribute="top" secondItem="5ip-fE-LsZ" secondAttribute="bottom" constant="49" id="qSs-EO-g4a"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Date Picker Question" id="cJz-qB-GlF">
+                    <navigationItem key="navigationItem" title="Customize Task" id="cJz-qB-GlF">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="XMO-Vi-RQc">
                             <connections>
                                 <action selector="cancel:" destination="UtK-F8-WPb" id="4d1-6u-QSB"/>
@@ -733,7 +734,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GaX-CL-4GK" id="sg9-Sv-0YO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6O-Hf-hlI">
@@ -1227,6 +1228,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSo-Ut-wxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7410" y="4031"/>
+        </scene>
+        <!--Consent Task-->
+        <scene sceneID="rMn-Gx-yQJ">
+            <objects>
+                <viewController id="jtE-B1-txi" customClass="ConsentTask" customModule="Proj_Insight" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j1L-pW-GOb"/>
+                        <viewControllerLayoutGuide type="bottom" id="6fo-hp-QfB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Ya-B6-zT0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VI0-YO-D9W"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kza-pM-Zxd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8316" y="4764"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gag-Sj-5hm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ys-9f-f3P" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G5D-D7-147">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jtE-B1-txi" kind="relationship" relationship="rootViewController" id="3W1-vQ-B9f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1od-ee-6U2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7408.8000000000002" y="4763.5682158920545"/>
         </scene>
     </scenes>
     <resources>
