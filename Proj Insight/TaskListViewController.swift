@@ -125,7 +125,6 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
             if indexPath.row == 0 /*boolean Question*/          ||
                 indexPath.row == 1 /*Date Question*/            ||
                 indexPath.row == 2 /*Date & Time Question*/     ||
-                indexPath.row == 4 /*Scale Question*/           ||
                 indexPath.row == 5 /*Text Question*/            ||
                 indexPath.row == 7 /*Time Interval Question*/   ||
                 indexPath.row == 8 /*Time of Day Question*/{
@@ -137,6 +136,8 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
             }else if indexPath.row == 6 /* Text Choice Question*/||
                         indexPath.row == 9/*Multiple choices Question*/{
                 self.performSegue(withIdentifier: "MultipleChoiceSegue", sender: self)
+            }else if indexPath.row == 4 /* Scale Question*/{
+                self.performSegue(withIdentifier: "ScaleQuestionSegue", sender: self)
             }else{
                 //This is the default one right now
                 self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)

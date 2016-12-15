@@ -66,6 +66,10 @@ var inputtedUnitPlaceholder = ""
 var inputtedUnitText = ""
 var inputtedChoicesArray = [String]()
 var studystep: ORKQuestionStep?
+var leftDescriptor = ""
+var rightDescriptor = ""
+var minValue = -1
+var maxValue = -1
 
 enum TaskListRow: Int, CustomStringConvertible {
 
@@ -79,10 +83,7 @@ enum TaskListRow: Int, CustomStringConvertible {
     case timeIntervalQuestion
     case timeOfDayQuestion
     case valuePickerChoiceQuestion
-    case eligibilityTask
-    case consent                //
-    case accountCreation        //
-    case passcode
+    case consent
     case fitness
     case holePegTest
     case psat
@@ -124,10 +125,7 @@ enum TaskListRow: Int, CustomStringConvertible {
                 ]),
             TaskListRowSection(title: "Onboarding", rows:
                 [
-                    .eligibilityTask,
-                    .consent,
-                    .accountCreation,
-                    .passcode,
+                    .consent
                 ]),
             TaskListRowSection(title: "Active Tasks", rows:
                 [
@@ -181,17 +179,10 @@ enum TaskListRow: Int, CustomStringConvertible {
         case .valuePickerChoiceQuestion:
             return NSLocalizedString("Value Picker", comment: "")
 
-        case .eligibilityTask:
-            return NSLocalizedString("Eligibility Task", comment: "")
             
         case .consent:
             return NSLocalizedString("Consent-Obtaining", comment: "")
 
-        case .accountCreation:
-            return NSLocalizedString("Account Creation", comment: "")
-
-        case .passcode:
-            return NSLocalizedString("Passcode Creation", comment: "")
             
         case .fitness:
             return NSLocalizedString("Fitness Check", comment: "")
@@ -263,19 +254,11 @@ enum TaskListRow: Int, CustomStringConvertible {
             
         case .valuePickerChoiceQuestion:
             return NSLocalizedString("Question", comment: "")
-            
-            
-        case .eligibilityTask:
-            return NSLocalizedString("Onboarding", comment: "")
+
             
         case .consent:
             return NSLocalizedString("Onboarding", comment: "")
             
-        case .accountCreation:
-            return NSLocalizedString("Onboarding", comment: "")
-            
-        case .passcode:
-            return NSLocalizedString("Onboarding", comment: "")
             
         case .fitness:
             return NSLocalizedString("Active Tasks", comment: "")
@@ -389,16 +372,6 @@ enum TaskListRow: Int, CustomStringConvertible {
         case valuePickerChoiceQuestionTask
         case valuePickerChoiceQuestionStep
         
-        // Eligibility task specific indentifiers.
-        case eligibilityTask
-        case eligibilityIntroStep
-        case eligibilityFormStep
-        case eligibilityFormItem01
-        case eligibilityFormItem02
-        case eligibilityFormItem03
-        case eligibilityIneligibleStep
-        case eligibilityEligibleStep
-        
         // Consent task specific identifiers.
         case consentTask
         case visualConsentStep
@@ -406,17 +379,6 @@ enum TaskListRow: Int, CustomStringConvertible {
         case consentReviewStep
         case consentDocumentParticipantSignature
         case consentDocumentInvestigatorSignature
-        
-        // Account creation task specific identifiers.
-        case accountCreationTask
-        case registrationStep
-        case waitStep
-        case verificationStep
-        
-
-        // Passcode task specific identifiers.
-        case passcodeTask
-        case passcodeStep
 
         // Active tasks.
         case fitnessTask
@@ -469,18 +431,8 @@ enum TaskListRow: Int, CustomStringConvertible {
         case .valuePickerChoiceQuestion:
                 return valuePickerChoiceQuestionTask
 
-        
-        case .eligibilityTask:
-            return eligibilityTask
-            
         case .consent:
             return consentTask
-            
-        case .accountCreation:
-            return accountCreationTask
-
-        case .passcode:
-            return passcodeTask
 
         case .fitness:
             return fitnessTask
@@ -661,59 +613,54 @@ enum TaskListRow: Int, CustomStringConvertible {
     
     /// This task presents two options for questions displaying a scale control.
     private var scaleQuestionTask: ORKTask {
-        // The first step is a scale control with 10 discrete ticks.
-        let step1AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: exampleHighValueText, minimumValueDescription: exampleLowValueText)
         
-        let questionStep1 = ORKQuestionStep(identifier: String(describing:Identifier.discreteScaleQuestionStep), title: exampleQuestionText, answer: step1AnswerFormat)
-        
-        questionStep1.text = exampleDetailText
-        
-        // The second step is a scale control that allows continuous movement with a percent formatter.
-        let step2AnswerFormat = ORKAnswerFormat.continuousScale(withMaximumValue: 1.0, minimumValue: 0.0, defaultValue: 99.0, maximumFractionDigits: 0, vertical: false, maximumValueDescription: nil, minimumValueDescription: nil)
-        step2AnswerFormat.numberStyle = .percent
-        
-        let questionStep2 = ORKQuestionStep(identifier: String(describing:Identifier.continuousScaleQuestionStep), title: exampleQuestionText, answer: step2AnswerFormat)
-        
-        questionStep2.text = exampleDetailText
-        
-        // The third step is a vertical scale control with 10 discrete ticks.
-        let step3AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: 10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: true, maximumValueDescription: nil, minimumValueDescription: nil)
-        
-        let questionStep3 = ORKQuestionStep(identifier: String(describing:Identifier.discreteVerticalScaleQuestionStep), title: exampleQuestionText, answer: step3AnswerFormat)
-        
-        questionStep3.text = exampleDetailText
-        
-        // The fourth step is a vertical scale control that allows continuous movement.
-        let step4AnswerFormat = ORKAnswerFormat.continuousScale(withMaximumValue: 5.0, minimumValue: 1.0, defaultValue: 99.0, maximumFractionDigits: 2, vertical: true, maximumValueDescription: exampleHighValueText, minimumValueDescription: exampleLowValueText)
-        
-        let questionStep4 = ORKQuestionStep(identifier: String(describing:Identifier.continuousVerticalScaleQuestionStep), title: exampleQuestionText, answer: step4AnswerFormat)
-        
-        questionStep4.text = exampleDetailText
-        
-        // The fifth step is a scale control that allows text choices.
-        let textChoices : [ORKTextChoice] = [ORKTextChoice(text: "Poor", value: 1 as NSCoding & NSCopying & NSObjectProtocol), ORKTextChoice(text: "Fair", value: 2 as NSCoding & NSCopying & NSObjectProtocol), ORKTextChoice(text: "Good", value: 3 as NSCoding & NSCopying & NSObjectProtocol), ORKTextChoice(text: "Above Average", value: 10 as NSCoding & NSCopying & NSObjectProtocol), ORKTextChoice(text: "Excellent", value: 5 as NSCoding & NSCopying & NSObjectProtocol)]
+        // The first step is a scale control with x number of discrete ticks.
+        var titleText: String = ""
+        var minimumValue = -1
+        var maximumValue = -1
+        var leftDescr = ""
+        var rightDescr = ""
+        if (inputtedTitle != ""){
+            titleText = inputtedTitle
+        }else{
+            titleText = exampleDescription
+        }
+        if (leftDescriptor != ""){
+            leftDescr = leftDescriptor
+        }else{
+            leftDescr = exampleLowValueText
+        }
 
-        let step5AnswerFormat = ORKAnswerFormat.textScale(with: textChoices, defaultIndex: NSIntegerMax, vertical: false)
+        if (rightDescriptor != ""){
+            rightDescr = rightDescriptor
+        }else{
+            rightDescr = exampleHighValueText
+        }
+
+        if (minValue != -1){
+            minimumValue = minValue
+        }else{
+            minimumValue = 1           //Default Value
+        }
+        if (maxValue != -1){
+            maximumValue = maxValue
+        }else{
+            maximumValue = 10           //Default Value
+        }
+        print("Min Value = ", minimumValue)
+        print("Max Value = ", maximumValue)
+        let step1AnswerFormat = ORKAnswerFormat.scale(withMaximumValue: maximumValue, minimumValue: minimumValue, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: rightDescr, minimumValueDescription: leftDescr)
         
-        let questionStep5 = ORKQuestionStep(identifier: String(describing:Identifier.textScaleQuestionStep), title: exampleQuestionText, answer: step5AnswerFormat)
+        let questionStep1 = ORKQuestionStep(identifier: String(describing:Identifier.discreteScaleQuestionStep), title: titleText, answer: step1AnswerFormat)  
         
-        questionStep5.text = exampleDetailText
+        if (inputtedDetailedDescription != ""){
+            questionStep1.text = inputtedDetailedDescription
+        }else{
+            questionStep1.text = exampleDetailText
+        }
         
-        // The sixth step is a vertical scale control that allows text choices.
-        let step6AnswerFormat = ORKAnswerFormat.textScale(with: textChoices, defaultIndex: NSIntegerMax, vertical: true)
         
-        let questionStep6 = ORKQuestionStep(identifier: String(describing:Identifier.textVerticalScaleQuestionStep), title: exampleQuestionText, answer: step6AnswerFormat)
-        
-        questionStep6.text = exampleDetailText
-        
-        return ORKOrderedTask(identifier: String(describing:Identifier.scaleQuestionTask), steps: [
-            questionStep1,
-            questionStep2,
-            questionStep3,
-            questionStep4,
-            questionStep5,
-            questionStep6
-            ])
+        return ORKOrderedTask(identifier: String(describing:Identifier.scaleQuestionTask), steps:[questionStep1])
     }
     
     /**
@@ -990,79 +937,6 @@ enum TaskListRow: Int, CustomStringConvertible {
     }
 
     
-    
-    
-    /**
-    A task demonstrating how the ResearchKit framework can be used to determine
-    eligibility using a navigable ordered task.
-    */
-    private var eligibilityTask: ORKTask {
-        // Intro step
-        let introStep = ORKInstructionStep(identifier: String(describing:Identifier.eligibilityIntroStep))
-        introStep.title = NSLocalizedString("Eligibility Task Example", comment: "")
-        
-        // Form step
-        let formStep = ORKFormStep(identifier: String(describing:Identifier.eligibilityFormStep))
-        formStep.title = NSLocalizedString("Eligibility", comment: "")
-        formStep.text = exampleQuestionText
-        formStep.isOptional = false
-        
-        // Form items
-        let textChoices : [ORKTextChoice] = [ORKTextChoice(text: "Yes", value: "Yes" as NSCoding & NSCopying & NSObjectProtocol), ORKTextChoice(text: "No", value: "No" as NSCoding & NSCopying & NSObjectProtocol), ORKTextChoice(text: "N/A", value: "N/A" as NSCoding & NSCopying & NSObjectProtocol)]
-        let answerFormat = ORKTextChoiceAnswerFormat(style: ORKChoiceAnswerStyle.singleChoice, textChoices: textChoices)
-        
-        let formItem01 = ORKFormItem(identifier: String(describing:Identifier.eligibilityFormItem01), text: exampleQuestionText, answerFormat: answerFormat)
-        formItem01.isOptional = false
-        let formItem02 = ORKFormItem(identifier: String(describing:Identifier.eligibilityFormItem02), text: exampleQuestionText, answerFormat: answerFormat)
-        formItem02.isOptional = false
-        let formItem03 = ORKFormItem(identifier: String(describing:Identifier.eligibilityFormItem03), text: exampleQuestionText, answerFormat: answerFormat)
-        formItem03.isOptional = false
-        
-        formStep.formItems = [
-            formItem01,
-            formItem02,
-            formItem03
-        ]
-        
-        // Ineligible step
-        let ineligibleStep = ORKInstructionStep(identifier: String(describing:Identifier.eligibilityIneligibleStep))
-        ineligibleStep.title = NSLocalizedString("You are ineligible to join the study", comment: "")
-        
-        // Eligible step
-        let eligibleStep = ORKCompletionStep(identifier: String(describing:Identifier.eligibilityEligibleStep))
-        eligibleStep.title = NSLocalizedString("You are eligible to join the study", comment: "")
-        
-        // Create the task
-        let eligibilityTask = ORKNavigableOrderedTask(identifier: String(describing:Identifier.eligibilityTask), steps: [
-            introStep,
-            formStep,
-            ineligibleStep,
-            eligibleStep
-            ])
-        
-        /*
-        // Build navigation rules.
-        var resultSelector = ORKResultSelector(stepIdentifier: String(describing:Identifier.eligibilityFormStep), resultIdentifier: String(describing:Identifier.eligibilityFormItem01))
-        let predicateFormItem01 = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: "Yes" as NSCoding & NSCopying & NSObjectProtocol)
-        
-        resultSelector = ORKResultSelector(stepIdentifier: String(describing:Identifier.eligibilityFormStep), resultIdentifier: String(describing:Identifier.eligibilityFormItem02))
-        let predicateFormItem02 = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: "Yes" as NSCoding & NSCopying & NSObjectProtocol)
-        
-        resultSelector = ORKResultSelector(stepIdentifier: String(describing:Identifier.eligibilityFormStep), resultIdentifier: String(describing:Identifier.eligibilityFormItem03))
-        let predicateFormItem03 = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: "No" as NSCoding & NSCopying & NSObjectProtocol)
-        
-        let predicateEligible = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateFormItem01, predicateFormItem02, predicateFormItem03])
-        let predicateRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: [ (predicateEligible, String(describing:Identifier.eligibilityEligibleStep)) ])
-        
-        eligibilityTask.setNavigationRule(predicateRule, forTriggerStepIdentifier:String(describing:Identifier.eligibilityFormStep))
-        
-        // Add end direct rules to skip unneeded steps
-        let directRule = ORKDirectStepNavigationRule(destinationStepIdentifier: ORKNullStepIdentifier)
-        eligibilityTask.setNavigationRule(directRule, forTriggerStepIdentifier:String(describing:Identifier.eligibilityIneligibleStep))
-        */
-        return eligibilityTask
-    }
-    
     /// A task demonstrating how the ResearchKit framework can be used to obtain informed consent.
     private var consentTask: ORKTask {
         /*
@@ -1104,65 +978,6 @@ enum TaskListRow: Int, CustomStringConvertible {
             sharingConsentStep,
             reviewConsentStep
             ])
-    }
-    
-    /// This task presents the Account Creation process.
-    private var accountCreationTask: ORKTask {
-        /*
-        A registration step provides a form step that is populated with email and password fields.
-        If you wish to include any of the additional fields, then you can specify it through the `options` parameter.
-        */
-        let registrationTitle = NSLocalizedString("Registration", comment: "")
-        let passcodeValidationRegex = "^(?=.*\\d).{4,8}$"
-        let passcodeInvalidMessage = NSLocalizedString("A valid password must be 4 and 8 digits long and include at least one numeric character.", comment: "")
-        let registrationOptions: ORKRegistrationStepOption = [.includeGivenName, .includeFamilyName, .includeGender, .includeDOB]
-        let registrationStep = ORKRegistrationStep(identifier: String(describing:Identifier.registrationStep), title: registrationTitle, text: exampleDetailText, passcodeValidationRegex: passcodeValidationRegex, passcodeInvalidMessage: passcodeInvalidMessage, options: registrationOptions)
-        
-        /*
-        A wait step allows you to upload the data from the user registration onto your server before presenting the verification step.
-        */
-        let waitTitle = NSLocalizedString("Creating account", comment: "")
-        let waitText = NSLocalizedString("Please wait while we upload your data", comment: "")
-        let waitStep = ORKWaitStep(identifier: String(describing:Identifier.waitStep))
-        waitStep.title = waitTitle
-        waitStep.text = waitText
-        
-        /*
-        A verification step view controller subclass is required in order to use the verification step.
-        The subclass provides the view controller button and UI behavior by overriding the following methods.
-        */
-        class VerificationViewController : ORKVerificationStepViewController {
-            override func resendEmailButtonTapped() {
-                let alertTitle = NSLocalizedString("Resend Verification Email", comment: "")
-                let alertMessage = NSLocalizedString("Button tapped", comment: "")
-                let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-        
-        let verificationStep = ORKVerificationStep(identifier: String(describing:Identifier.verificationStep), text: exampleDetailText, verificationViewControllerClass: VerificationViewController.self)
-        
-        return ORKOrderedTask(identifier: String(describing:Identifier.accountCreationTask), steps: [
-            registrationStep,
-            waitStep,
-            verificationStep
-            ])
-    }
-    
-    
-    /// This task demonstrates the Passcode creation process.
-    private var passcodeTask: ORKTask {
-        /*
-        If you want to protect the app using a passcode. It is reccomended to
-        ask user to create passcode as part of the consent process and use the
-        authentication and editing view controllers to interact with the passcode.
-        
-        The passcode is stored in the keychain.
-        */
-        let passcodeConsentStep = ORKPasscodeStep(identifier: String(describing:Identifier.passcodeStep))
-
-        return ORKOrderedTask(identifier: String(describing:Identifier.passcodeStep), steps: [passcodeConsentStep])
     }
     
 
@@ -1441,6 +1256,31 @@ enum TaskListRow: Int, CustomStringConvertible {
     public func getChoicesArray() -> [String] {
         return inputtedChoicesArray
     }
+    public func setLeftDescriptor(input: String) {
+        leftDescriptor = input
+    }
+    public func getLeftDescriptor() -> String {
+        return leftDescriptor
+    }
+    public func setRightDescriptor(input: String) {
+        rightDescriptor = input
+    }
+    public func getRightDescriptor() -> String {
+        return rightDescriptor
+    }
+    public func setMinValue(input: String) {
+        minValue = (input as NSString).integerValue
+    }
+    public func getMinValue() -> Int {
+        return minValue
+    }
+    public func setMaxValue(input: String) {
+        maxValue = (input as NSString).integerValue
+    }
+    public func getMaxValue() -> Int {
+        return maxValue
+    }
+    
 
 
 
@@ -1452,6 +1292,10 @@ enum TaskListRow: Int, CustomStringConvertible {
         inputtedUnitPlaceholder = ""
         inputtedUnitText = ""
         inputtedChoicesArray = [String]()
+        leftDescriptor = ""
+        rightDescriptor = ""
+        minValue = -1
+        maxValue = -1
     }
 
 
