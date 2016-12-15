@@ -137,9 +137,13 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
             }else if indexPath.row == 6 /* Text Choice Question*/||
                         indexPath.row == 9/*Multiple choices Question*/{
                 self.performSegue(withIdentifier: "MultipleChoiceSegue", sender: self)
-            }else{
+            }
+            else if indexPath.row == 11{
+                self.performSegue(withIdentifier: "ConsentFormSegue", sender: self)
+            }
+            else{
                 //This is the default one right now
-                self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
+                self.performSegue(withIdentifier: "ConsentFormSegue", sender: self)
             }
             
         }
