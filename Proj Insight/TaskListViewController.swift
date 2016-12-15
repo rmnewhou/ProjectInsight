@@ -98,9 +98,6 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
         let taskListRow = TaskListRow.sections[(indexPath as NSIndexPath).section].rows[(indexPath as NSIndexPath).row]
         ActivitiesConnections.sharedInstance.tempTaskListRow = taskListRow
         
-        //taskListRow.setDescription(input: "NEW TITLE HERE")
-        
-        
         /*
         *   What needs to happen is this:
         *   1) The user clicks on a cell and a UIActionSheet is brought up
@@ -125,8 +122,25 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
         }
         
         let addEditAction = UIAlertAction(title: "Customize Task", style: UIAlertActionStyle.default){ (ACTION) in
-            print("Customize Task")
-            self.performSegue(withIdentifier: "edit/AddTaskSegue", sender: self)
+            if indexPath.row == 0 /*boolean Question*/          ||
+                indexPath.row == 1 /*Date Question*/            ||
+                indexPath.row == 2 /*Date & Time Question*/     ||
+                indexPath.row == 4 /*Scale Question*/           ||
+                indexPath.row == 5 /*Text Question*/            ||
+                indexPath.row == 7 /*Time Interval Question*/   ||
+                indexPath.row == 8 /*Time of Day Question*/{
+                
+                self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
+                
+            }else if indexPath.row == 3 /*Numeric Question*/{
+                self.performSegue(withIdentifier: "ValuesAndPlaceholders", sender: self)
+            }else if indexPath.row == 6 /* Text Choice Question*/||
+                        indexPath.row == 9/*Multiple choices Question*/{
+                self.performSegue(withIdentifier: "MultipleChoiceSegue", sender: self)
+            }else{
+                //This is the default one right now
+                self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
+            }
             
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel){ (ACTION) in

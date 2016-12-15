@@ -7,18 +7,34 @@
 //
 
 import UIKit
+import Firebase
+import ResearchKit
 
 
 // class which will contain 
-class ListStudiesTableViewController: UITableViewController {
+class ListStudiesTableViewController: UITableViewController, ORKTaskViewControllerDelegate{
+  
+    
+    @IBAction func signOutPressed(_ sender: Any) {
+        do {
+            try FIRAuth.auth()!.signOut()
+            dismiss(animated: true, completion: nil)
+        } catch {
+            
+        }
 
+    }
     
     // MARK: Properties
+    var runthrough: Int = 0
+
     
+    var studyToDoArr = [Task]()
     var studies = [Study]()
     var filteredStudies = [Study]()    //for when searching and need to filter results.
-//    var StudyByType = [Study]()
-//    var StudyType: String = String()
+
+    let usersRef = FIRDatabase.database().reference(withPath: "online")
+    var user: User!
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -35,34 +51,32 @@ class ListStudiesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        /if let savedStudies = loadStudies() {
-//            if savedStudies[0].type == mealType{          
-//                mealsByType += savedMeals
-//            }else{
-//                loadSampleMeals()
-//            }
-//        }else{
-//            // Load the sample data.
-//            loadSampleStudies()
-//        }
-        loadSampleStudies()
-        
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         //searchController.extendedLayoutIncludesOpaqueBars = true;
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-
+        
+        refreshControl = UIRefreshControl()
+        refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl!.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl!)
+        
+        loadStudies()
+    }
+    func refresh(sender:AnyObject) {
+        loadStudies()
     }
     
     
-    func loadSampleStudies() { //Initialize foods
-        let study1 = Study(name: "First Study")! // Eventually will need: Name, ID, IsPrivate, Owner (possibly)
-        let study2 = Study(name: "Second Study")!
-        let study3 = Study(name: "Third Study")!
-        let study4 = Study(name: "Fourth Study")!
-        studies += [study1, study2, study3, study4]
+    func loadStudies() { //Initialize
+        studies = ActivitiesConnections.sharedInstance.allStudyArr
+        self.tableView.reloadData()
+
+        if (self.refreshControl?.isRefreshing)!
+        {
+            self.refreshControl?.endRefreshing()
+        }
     }
 
     
@@ -110,6 +124,20 @@ class ListStudiesTableViewController: UITableViewController {
     return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true) // REMEMBER
+
+        studyToDoArr = ActivitiesConnections.sharedInstance.allStudyArr[indexPath.row].getTasks()
+        // Create the taskViewControlled based on the task that we have stored in our studyCurrent array.
+        let taskViewController = ORKTaskViewController(task: studyToDoArr[runthrough].task, taskRun: nil)
+        taskViewController.delegate = self
+        // Assign a directory to store `taskViewController` output.
+        taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        present(taskViewController, animated: true, completion: nil)
+        
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -154,17 +182,24 @@ class ListStudiesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    // NSCoding
-    func saveStudies() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(studies, toFile: Study.ArchiveURL.path)
-        if !isSuccessfulSave {
-            print("Failed to save studies...")
+        public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        
+            
+            taskViewController.dismiss(animated: true, completion: nil)
+            runthrough += 1
+            // Create the taskViewControlled based on the task that we have stored in our studyCurrent array.
+            if(runthrough < studyToDoArr.count){
+                let taskViewController = ORKTaskViewController(task: studyToDoArr[runthrough].task, taskRun: nil)
+                taskViewController.delegate = self
+                // Assign a directory to store `taskViewController` output.
+                taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                
+                present(taskViewController, animated: true, completion: nil)
+            }else{
+                runthrough = 0
+            }
+            
         }
-    }
-    func loadStudies() -> [Study]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Study.ArchiveURL.path) as? [Study]
-    }
-
 }
 extension ListStudiesTableViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
