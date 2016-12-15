@@ -153,6 +153,9 @@ class MultipleChoices: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var choice3: UITextField!
     @IBOutlet weak var choice4: UITextField!
     
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     @IBAction func saveTaskButton(_ sender: Any) {
@@ -229,3 +232,73 @@ class MultipleChoices: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
 }
+class ScaleQuestion: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var detailsTextField: UITextField!
+    @IBOutlet weak var leftDescriptor: UITextField!
+    @IBOutlet weak var rightDescriptor: UITextField!
+    @IBOutlet weak var minValue: UITextField!
+    @IBOutlet weak var maxValue: UITextField!
+
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func savePressed(_ sender: Any) {
+        let taskListRow = ActivitiesConnections.sharedInstance.tempTaskListRow
+        
+        let name = "\(taskListRow!)"
+        let type = taskListRow?.taskType
+        
+        
+        var photo = #imageLiteral(resourceName: "activityIcon.png") //Set default photo to be the activtyIcon
+        if (type == "Question"){
+            photo  = #imageLiteral(resourceName: "questionMarkIcon.png")                           //questionMarkIcon.png
+            
+        }else if(type == "Onboarding"){
+            photo = #imageLiteral(resourceName: "onBoardingIcon.png")                             //onBoardingIcon.png
+        }else{
+            photo = #imageLiteral(resourceName: "activityIcon.png")                             //activityIcon.png
+        }
+        
+        //Assign the new text in this task to be the text of what was entered
+        taskListRow?.setTitle(input: titleTextField.text!)
+        taskListRow?.setDetailedDescription(input: detailsTextField.text!)
+        taskListRow?.setLeftDescriptor(input: leftDescriptor.text!)
+        taskListRow?.setRightDescriptor(input: rightDescriptor.text!)
+        taskListRow?.setMinValue(input: minValue.text!)
+        taskListRow?.setMaxValue(input: maxValue.text!)
+        
+        let task = taskListRow?.representedTask      // Create a task from the `TaskListRow` to present in the `ORKTaskViewController`.
+        
+        
+        let taskToStoreInArray = Task(name: name, photo: photo, type: type!, task: task!)
+        ActivitiesConnections.sharedInstance.studyCurrent?.addTask(taskToStoreInArray!) //Adding task to study arr
+        
+        
+        NotificationCenter.default.post(name: .reload, object: nil) //Need this to update the tableview in taskbuilderViewController.swift
+        
+        
+        taskListRow?.resetStrings() //This will return the strings to the "Example" strings if a preview is chosen
+        
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 1], animated: true);
+        
+        
+        performSegue(withIdentifier: "saveTaskSegue", sender: self)
+        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+

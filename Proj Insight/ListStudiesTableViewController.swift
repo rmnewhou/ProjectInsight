@@ -230,6 +230,10 @@ class ListStudiesTableViewController: UITableViewController, ORKTaskViewControll
             
             
             let taskResult : ORKTaskResult = taskViewController.result
+            let results = taskResult.results as! [ORKQuestionResult]
+            /*print("\(toString(results))")*/
+            //var resultsString = results as String!
+            
             var taskResultValue = taskResult
                 if let formStepResult = taskResultValue.stepResult(forStepIdentifier: "booleanQuestionStep"), let formItemResults = formStepResult.results
                 {
