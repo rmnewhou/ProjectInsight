@@ -24,6 +24,12 @@
 		115B7A5E1DCD56DD004BB8B2 /* TaskListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B7A5C1DCD56DC004BB8B2 /* TaskListRow.swift */; };
 		115B7A5F1DCD56DD004BB8B2 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B7A5D1DCD56DC004BB8B2 /* TaskListViewController.swift */; };
 		115B7A651DD14BB8004BB8B2 /* ActivitiesConnections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B7A641DD14BB8004BB8B2 /* ActivitiesConnections.swift */; };
+		1176CA8A1E045D9300FB26E6 /* profileicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CA851E045D9300FB26E6 /* profileicon.png */; };
+		1176CA8B1E045D9300FB26E6 /* Under_construction.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CA861E045D9300FB26E6 /* Under_construction.png */; };
+		1176CA911E0464DE00FB26E6 /* AddTask.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CA8E1E0464DE00FB26E6 /* AddTask.png */; };
+		1176CA921E0464DE00FB26E6 /* AllStudies.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CA8F1E0464DE00FB26E6 /* AllStudies.png */; };
+		1176CA931E0464DE00FB26E6 /* MyStudies.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CA901E0464DE00FB26E6 /* MyStudies.png */; };
+		1176CA971E046DD700FB26E6 /* easyStudy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CA961E046DD700FB26E6 /* easyStudy.png */; };
 		11A0712B1DBEBCC000BEDFE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0712A1DBEBCC000BEDFE2 /* AppDelegate.swift */; };
 		11A0712D1DBEBCC000BEDFE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0712C1DBEBCC000BEDFE2 /* ViewController.swift */; };
 		11A071321DBEBCC000BEDFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A071311DBEBCC000BEDFE2 /* Assets.xcassets */; };
@@ -100,6 +106,12 @@
 		115B7A5C1DCD56DC004BB8B2 /* TaskListRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListRow.swift; sourceTree = "<group>"; };
 		115B7A5D1DCD56DC004BB8B2 /* TaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		115B7A641DD14BB8004BB8B2 /* ActivitiesConnections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesConnections.swift; sourceTree = "<group>"; };
+		1176CA851E045D9300FB26E6 /* profileicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileicon.png; sourceTree = "<group>"; };
+		1176CA861E045D9300FB26E6 /* Under_construction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Under_construction.png; sourceTree = "<group>"; };
+		1176CA8E1E0464DE00FB26E6 /* AddTask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddTask.png; sourceTree = "<group>"; };
+		1176CA8F1E0464DE00FB26E6 /* AllStudies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AllStudies.png; sourceTree = "<group>"; };
+		1176CA901E0464DE00FB26E6 /* MyStudies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyStudies.png; sourceTree = "<group>"; };
+		1176CA961E046DD700FB26E6 /* easyStudy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = easyStudy.png; sourceTree = "<group>"; };
 		11A071271DBEBCC000BEDFE2 /* Proj Insight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proj Insight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A0712A1DBEBCC000BEDFE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A0712C1DBEBCC000BEDFE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +152,12 @@
 		1147B5221DD5652400B9B95D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1176CA851E045D9300FB26E6 /* profileicon.png */,
+				1176CA8E1E0464DE00FB26E6 /* AddTask.png */,
+				1176CA8F1E0464DE00FB26E6 /* AllStudies.png */,
+				1176CA901E0464DE00FB26E6 /* MyStudies.png */,
+				1176CA961E046DD700FB26E6 /* easyStudy.png */,
+				1176CA861E045D9300FB26E6 /* Under_construction.png */,
 				11F6C4841DF498CC00B86454 /* Insight symbol white.png */,
 				1147B5271DD593C800B9B95D /* questionMarkIcon.png */,
 				1147B5291DD594FC00B9B95D /* activityIcon.png */,
@@ -333,11 +351,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				11F6C4851DF498CC00B86454 /* Insight symbol white.png in Resources */,
+				1176CA971E046DD700FB26E6 /* easyStudy.png in Resources */,
+				1176CA8B1E045D9300FB26E6 /* Under_construction.png in Resources */,
 				1125BCBC1DC065A700B4687B /* analyzeIcon.png in Resources */,
 				1147B5261DD5921700B9B95D /* onBoardingIcon.png in Resources */,
 				11A071351DBEBCC000BEDFE2 /* LaunchScreen.storyboard in Resources */,
 				1147B5281DD593C800B9B95D /* questionMarkIcon.png in Resources */,
+				1176CA911E0464DE00FB26E6 /* AddTask.png in Resources */,
+				1176CA931E0464DE00FB26E6 /* MyStudies.png in Resources */,
 				11DF3BA71DF4C42000468A83 /* Main.storyboard in Resources */,
+				1176CA921E0464DE00FB26E6 /* AllStudies.png in Resources */,
+				1176CA8A1E045D9300FB26E6 /* profileicon.png in Resources */,
 				1147B52A1DD594FC00B9B95D /* activityIcon.png in Resources */,
 				11A071321DBEBCC000BEDFE2 /* Assets.xcassets in Resources */,
 				11DF3BA51DF4C12300468A83 /* GoogleService-Info.plist in Resources */,

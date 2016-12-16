@@ -31,13 +31,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                     let alert = UIAlertController(title: "Invalid Login!", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                     // show the alert
+                                    self.textFieldLoginEmail.text = ""
+                                    self.textFieldLoginPassword.text = ""
                                     self.present(alert, animated: true, completion: nil)
                                     
+                                }else{
+                                    self.textFieldLoginEmail.text = ""
+                                    self.textFieldLoginPassword.text = ""
+                                    self.performSegue(withIdentifier: self.loginToStudy, sender: nil)
                                 }
         }
-        textFieldLoginEmail.text = ""
-        textFieldLoginPassword.text = ""
-        self.performSegue(withIdentifier: self.loginToStudy, sender: nil)
+        //self.performSegue(withIdentifier: self.loginToStudy, sender: nil)
     }
     @IBAction func signUpSelected(_ sender: Any) {
         let alert = UIAlertController(title: "Sign Up",

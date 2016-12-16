@@ -398,6 +398,7 @@ class ConsentTask: UIViewController, UITextFieldDelegate {
     @IBAction func sectionStudyTaskNext(_ sender: Any) {
         
         studyTasksSection.summary = sectionStudyTaskShorttext.text
+        print("\n\n CHECK:\n", studyTasksSection.summary)
         studyTasksSection.content = sectionStudyTaskLongtext.text
         
 
@@ -410,7 +411,7 @@ class ConsentTask: UIViewController, UITextFieldDelegate {
     
     @IBAction func save(_ sender: Any) {
     
-   
+        print("\n\n CHECK:\n", studyTasksSection.summary)
         withdrawingSection.summary = sectionWithdrawShorttext.text
         withdrawingSection.content = sectionWithdrawLongtext.text
         

@@ -1,6 +1,6 @@
 //
 //  WalkthroughViewController.swift
-//  TouchID
+// 
 //
 //  Created by Duc Tran on 11/29/15.
 //  Copyright © 2015 Developers Academy. All rights reserved.

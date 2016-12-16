@@ -7,8 +7,8 @@ class PageViewController: UIPageViewController
 {
     // Walkthrough screen text
     var pageHeaders = ["Welcome to Insight Study Buider", "View Studies", "Create Studies", "Coming Soon!", "Researching made easy!"]
-    var pageImages = ["questionMarkIcon", "questionMarkIcon", "questionMarkIcon", "questionMarkIcon", "questionMarkIcon"]
-    var pageDescriptions = ["Answer studies created by others or create your own by customizing questions and tasks.", "Check out the latest studies created by other users. ", "Use our unique task builder to join questions in tasks together for a study specific to your needs.", "Multiple features on the way!", ""]
+    var pageImages = ["Insight symbol white", "AllStudies", "AddTask", "Under_construction", "easyStudy"]
+    var pageDescriptions = ["Participate in studies created by others or create your own by customizing questions and tasks.", "Check out the latest studies created by other users. ", "Use our unique task builder to join questions in tasks together for a study specific to your needs.", "- Save studies in database\n- Active task customization\n- Add study attributes and more!", ""]
    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
