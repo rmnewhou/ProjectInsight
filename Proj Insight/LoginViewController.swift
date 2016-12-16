@@ -61,7 +61,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                                                         self.isNewUser = true
                                                                         if let pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as? PageViewController {
                                                                            // self.isNewUser = true
-                                                                            print("Got here first")
                                                                             self.present(pageViewController, animated: true, completion: nil)
                                                                         }
 
@@ -100,8 +99,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
             if user != nil && self.isNewUser == false {
-                print("\n\n HERE")
                 //self.performSegue(withIdentifier: self.loginToStudy, sender: nil)
+                /* We took this out for right now, because we don't believe and app with
+                 such important information should be able to log in immediately, if the phone has been restarted. 
+                 Privacy concerns
+                */
             }
         }
     }
