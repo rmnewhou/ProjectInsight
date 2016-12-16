@@ -21,15 +21,24 @@ import FirebaseDatabase
 class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textFieldLoginEmail: UITextField!
     @IBOutlet weak var textFieldLoginPassword: UITextField!
+    var isNewUser: DarwinBoolean = false
     
     let loginToStudy = "LoginToStudy"
     @IBAction func loginSelected(_ sender: Any) {
         FIRAuth.auth()!.signIn(withEmail: textFieldLoginEmail.text!,
-                               password: textFieldLoginPassword.text!)
-        
+                               password: textFieldLoginPassword.text!) { user, error in
+                                if error != nil {
+                                    let alert = UIAlertController(title: "Invalid Login!", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                    // show the alert
+                                    self.present(alert, animated: true, completion: nil)
+                                    
+                                }
+        }
         textFieldLoginEmail.text = ""
         textFieldLoginPassword.text = ""
-        }
+        self.performSegue(withIdentifier: self.loginToStudy, sender: nil)
+    }
     @IBAction func signUpSelected(_ sender: Any) {
         let alert = UIAlertController(title: "Sign Up",
                                       message: "Please enter information below",
@@ -45,6 +54,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                                                     if error == nil {
                                                                         FIRAuth.auth()!.signIn(withEmail: self.textFieldLoginEmail.text!,
                                                                                                password: self.textFieldLoginPassword.text!)
+                                                                        self.isNewUser = true
+                                                                        if let pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as? PageViewController {
+                                                                           // self.isNewUser = true
+                                                                            print("Got here first")
+                                                                            self.present(pageViewController, animated: true, completion: nil)
+                                                                        }
+
+                                                                    }else{
+                                                                        let alert = UIAlertController(title: "Invalid Login", message: "Email format must be: \"<youremail>@<domain>\"\nPassword must be at least 6 characters.", preferredStyle: UIAlertControllerStyle.alert)
+                                                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                                                        // show the alert
+                                                                        self.present(alert, animated: true, completion: nil)
                                                                     }
                                         }
         }
@@ -53,12 +74,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                          style: .default)
         
         alert.addTextField { textEmail in
-            textEmail.placeholder = "Enter your email"
+            textEmail.placeholder = "Enter email"
         }
         
         alert.addTextField { textPassword in
             textPassword.isSecureTextEntry = true
-            textPassword.placeholder = "Enter your password"
+            textPassword.placeholder = "Enter password (Min 6 characters)"
         }
         
         alert.addAction(saveAction)
@@ -71,13 +92,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         textFieldLoginEmail.delegate = self
         textFieldLoginPassword.delegate = self
-         print("\n\nHERE did load")
     }
     override func viewDidAppear(_ animated: Bool) {
         FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
-            if user != nil {
-                print("\n\nHERE did appear")
-                self.performSegue(withIdentifier: self.loginToStudy, sender: nil)
+            if user != nil && self.isNewUser == false {
+                print("\n\n HERE")
+                //self.performSegue(withIdentifier: self.loginToStudy, sender: nil)
             }
         }
     }
@@ -91,7 +111,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    @IBAction func unwindToLoginPage(_ sender: UIStoryboardSegue) {
+        do {
+            try FIRAuth.auth()!.signOut()
+            self.isNewUser = false
+            //dismiss(animated: true, completion: nil)
+        } catch {
+            
+        }
+    }
 
+    
+    
     
     // MARK: - Navigation
 /*
