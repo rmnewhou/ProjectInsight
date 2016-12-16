@@ -304,28 +304,25 @@ class ScaleQuestion: UIViewController, UITextFieldDelegate {
 }
 class ConsentTask: UIViewController, UITextFieldDelegate {
     
-    
-    var consentDocument: [ORKConsentSection] = []
-    var overviewSection = ORKConsentSection(type: .overview)
-    var dataGatheringSection = ORKConsentSection(type: .dataGathering)
-    var privacySection = ORKConsentSection(type: .privacy)
-    var dataUseSection = ORKConsentSection(type: .dataUse)
-    var timeCommitmentSection = ORKConsentSection (type: .timeCommitment)
-    var studySurveySection = ORKConsentSection (type: .studySurvey)
-    var studyTasksSection = ORKConsentSection (type: .studyTasks)
-    var withdrawingSection = ORKConsentSection (type: .withdrawing)
+    static var consentDocument: [ORKConsentSection] = []
+    static var overviewSection = ORKConsentSection(type: .overview)
+    static var dataGatheringSection = ORKConsentSection(type: .dataGathering)
+    static var privacySection = ORKConsentSection(type: .privacy)
+    static var dataUseSection = ORKConsentSection(type: .dataUse)
+    static var timeCommitmentSection = ORKConsentSection (type: .timeCommitment)
+    static var studySurveySection = ORKConsentSection (type: .studySurvey)
+    static var studyTasksSection = ORKConsentSection (type: .studyTasks)
+    static var withdrawingSection = ORKConsentSection (type: .withdrawing)
     @IBOutlet weak var sectionOverviewLongtext: UITextView!
     @IBOutlet weak var sectionOverviewShorttext: UITextField!
     
+    
+    
     @IBAction func sectionOverviewNextClicked(_ sender: Any) {
        
-        overviewSection.summary = sectionOverviewShorttext.text
-        overviewSection.content = sectionOverviewLongtext.text
-        
-        performSegue(withIdentifier: "overviewToDataGatheringSegue", sender: self)
-
-        
-        
+        ConsentTask.overviewSection.summary = sectionOverviewShorttext.text
+        ConsentTask.overviewSection.content = sectionOverviewLongtext.text
+        performSegue(withIdentifier: "OverviewNextSegue", sender: self)
     }
    
     
@@ -335,10 +332,9 @@ class ConsentTask: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var sectionDataGatheringLongtext: UITextView!
     
     @IBAction func sectionDataGatheringNext(_ sender: Any) {
-        
-        dataGatheringSection.summary = sectionDataGatheringShorttext.text
-        dataGatheringSection.content = sectionDataGatheringLongtext.text
-        
+        ConsentTask.dataGatheringSection.summary = sectionDataGatheringShorttext.text
+        ConsentTask.dataGatheringSection.content = sectionDataGatheringLongtext.text
+        performSegue(withIdentifier: "DataGatheringNextSegue", sender: self)
     }
     
     @IBOutlet weak var sectionPrivacyShorttext: UITextField!
@@ -348,10 +344,9 @@ class ConsentTask: UIViewController, UITextFieldDelegate {
     
     @IBAction func sectionPrivacyNext(_ sender: Any) {
         
-       privacySection.summary = sectionPrivacyShorttext.text
-       privacySection.content = sectionPrivacyLongtext.text
-        
-
+        ConsentTask.privacySection.summary = sectionPrivacyShorttext.text
+        ConsentTask.privacySection.content = sectionPrivacyLongtext.text
+        performSegue(withIdentifier: "PrivacyNextSegue", sender: self)
     }
     
     @IBOutlet weak var sectionDataUseShorttext: UITextField!
@@ -359,10 +354,9 @@ class ConsentTask: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var sectionDataUseLongtext: UITextView!
     
     @IBAction func sectionDataUseNext(_ sender: Any) {
-        dataUseSection.summary = sectionDataUseShorttext.text
-        dataUseSection.content = sectionDataUseLongtext.text
-        
-
+        ConsentTask.dataUseSection.summary = sectionDataUseShorttext.text
+        ConsentTask.dataUseSection.content = sectionDataUseLongtext.text
+        performSegue(withIdentifier: "DataUseNextSegue", sender: self)
     }
     
     @IBOutlet weak var sectionTimeCommitShorttext: UITextField!
@@ -372,9 +366,9 @@ class ConsentTask: UIViewController, UITextFieldDelegate {
     
     @IBAction func sectionTimeCommitNext(_ sender: Any) {
         
-        timeCommitmentSection.summary = sectionTimeCommitShorttext.text
-        timeCommitmentSection.content = sectionTimeCommitLongtext.text
-        
+        ConsentTask.timeCommitmentSection.summary = sectionTimeCommitShorttext.text
+        ConsentTask.timeCommitmentSection.content = sectionTimeCommitLongtext.text
+        performSegue(withIdentifier: "TimeCommitmentNextSegue", sender: self)
     }
     
     @IBOutlet weak var sectionStudySurveyShorttext: UITextField!
@@ -383,10 +377,9 @@ class ConsentTask: UIViewController, UITextFieldDelegate {
    
     @IBAction func sectionStudySurveyNext(_ sender: Any) {
 
-        studySurveySection.summary = sectionStudySurveyShorttext.text
-        studySurveySection.content = sectionStudySurveyLongtext.text
-        
-
+        ConsentTask.studySurveySection.summary = sectionStudySurveyShorttext.text
+        ConsentTask.studySurveySection.content = sectionStudySurveyLongtext.text
+        performSegue(withIdentifier: "StudySurveyNextSegue", sender: self)
     }
     
     
@@ -397,11 +390,9 @@ class ConsentTask: UIViewController, UITextFieldDelegate {
     
     @IBAction func sectionStudyTaskNext(_ sender: Any) {
         
-        studyTasksSection.summary = sectionStudyTaskShorttext.text
-        print("\n\n CHECK:\n", studyTasksSection.summary)
-        studyTasksSection.content = sectionStudyTaskLongtext.text
-        
-
+        ConsentTask.studyTasksSection.summary = sectionStudyTaskShorttext.text
+        ConsentTask.studyTasksSection.content = sectionStudyTaskLongtext.text
+        performSegue(withIdentifier: "StudyTasksNextSegue", sender: self)
     }
     
     @IBOutlet weak var sectionWithdrawShorttext: UITextField!
@@ -411,17 +402,16 @@ class ConsentTask: UIViewController, UITextFieldDelegate {
     
     @IBAction func save(_ sender: Any) {
     
-        print("\n\n CHECK:\n", studyTasksSection.summary)
-        withdrawingSection.summary = sectionWithdrawShorttext.text
-        withdrawingSection.content = sectionWithdrawLongtext.text
+        ConsentTask.withdrawingSection.summary = sectionWithdrawShorttext.text
+        ConsentTask.withdrawingSection.content = sectionWithdrawLongtext.text
         
       
         
         let theDocument: ORKConsentDocument = ORKConsentDocument.init()
         
         
-        theDocument.sections = [overviewSection,dataGatheringSection,privacySection,dataUseSection,timeCommitmentSection,
-        studySurveySection,studyTasksSection,withdrawingSection]
+        theDocument.sections = [ConsentTask.overviewSection,ConsentTask.dataGatheringSection,ConsentTask.privacySection,ConsentTask.dataUseSection,ConsentTask.timeCommitmentSection,
+        ConsentTask.studySurveySection,ConsentTask.studyTasksSection,ConsentTask.withdrawingSection]
         
         
         let sigInit  = ORKConsentSignature(forPersonWithTitle: nil, dateFormatString: nil, identifier: "ConsentDocumentParticipantSignature")
