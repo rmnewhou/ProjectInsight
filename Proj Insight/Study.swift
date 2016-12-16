@@ -15,7 +15,7 @@ class Study {
 
     // MARK: Properties
     var name: String
-
+    
     
 
     var tasksArr = [Task]()
