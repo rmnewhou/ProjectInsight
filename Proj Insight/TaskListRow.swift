@@ -110,23 +110,25 @@ enum TaskListRow: Int, CustomStringConvertible {
     /// Returns an array of all the task list row enum cases.
     static var sections: [ TaskListRowSection ] {
         return [
-            TaskListRowSection(title: "Questions", rows:
-                [
-                    .booleanQuestion,
-                    .dateQuestion,
-                    .dateTimeQuestion,
-                    .numericQuestion,
-                    .scaleQuestion,
-                    .textQuestion,
-                    .textChoiceQuestion,
-                    .timeIntervalQuestion,
-                    .timeOfDayQuestion,
-                    .valuePickerChoiceQuestion,
-                ]),
-            TaskListRowSection(title: "Onboarding", rows:
+                        TaskListRowSection(title: "Onboarding", rows:
                 [
                     .consent
                 ]),
+                        TaskListRowSection(title: "Questions", rows:
+                            [
+                                .booleanQuestion,
+                                .dateQuestion,
+                                .dateTimeQuestion,
+                                .numericQuestion,
+                                .scaleQuestion,
+                                .textQuestion,
+                                .textChoiceQuestion,
+                                .timeIntervalQuestion,
+                                .timeOfDayQuestion,
+                                .valuePickerChoiceQuestion,
+                                ]),
+
+                        
             TaskListRowSection(title: "Active Tasks", rows:
                 [
                     .fitness,
@@ -1098,15 +1100,15 @@ enum TaskListRow: Int, CustomStringConvertible {
           
             This signature is only used for the generated PDF.
         */
-        let signatureImage = UIImage(named: "signature")!
-        let investigatorSignatureTitle = NSLocalizedString("Investigator", comment: "")
-        let investigatorSignatureGivenName = NSLocalizedString("Jonny", comment: "")
-        let investigatorSignatureFamilyName = NSLocalizedString("Appleseed", comment: "")
-        let investigatorSignatureDateString = "3/10/15"
-
-        let investigatorSignature = ORKConsentSignature(forPersonWithTitle: investigatorSignatureTitle, dateFormatString: nil, identifier: String(describing:Identifier.consentDocumentInvestigatorSignature), givenName: investigatorSignatureGivenName, familyName: investigatorSignatureFamilyName, signatureImage: signatureImage, dateString: investigatorSignatureDateString)
+//        let signatureImage = UIImage(named: "signature")!
+//        let investigatorSignatureTitle = NSLocalizedString("Investigator", comment: "")
+//        let investigatorSignatureGivenName = NSLocalizedString("Jonny", comment: "")
+//        let investigatorSignatureFamilyName = NSLocalizedString("Appleseed", comment: "")
+//        let investigatorSignatureDateString = "3/10/15"
+//
+//        let investigatorSignature = ORKConsentSignature(forPersonWithTitle: investigatorSignatureTitle, dateFormatString: nil, identifier: String(describing:Identifier.consentDocumentInvestigatorSignature), givenName: investigatorSignatureGivenName, familyName: investigatorSignatureFamilyName, signatureImage: signatureImage, dateString: investigatorSignatureDateString)
         
-        consentDocument.addSignature(investigatorSignature)
+      //  consentDocument.addSignature(investigatorSignature)
         
         /* 
             This is the HTML content for the "Learn More" page for each consent
@@ -1116,7 +1118,7 @@ enum TaskListRow: Int, CustomStringConvertible {
             If your content is just text, you can use the `content` property
             instead of the `htmlContent` property of `ORKConsentSection`.
         */
-        let htmlContentString = "<ul><li>Lorem</li><li>ipsum</li><li>dolor</li></ul><p>\(loremIpsumLongText)</p><p>\(loremIpsumMediumText)</p>"
+//        let htmlContentString = "<ul><li>Lorem</li><li>ipsum</li><li>dolor</li></ul><p>\(loremIpsumLongText)</p><p>\(loremIpsumMediumText)</p>"
         
         /*
             These are all the consent section types that have pre-defined animations
@@ -1143,14 +1145,14 @@ enum TaskListRow: Int, CustomStringConvertible {
         var consentSections: [ORKConsentSection] = consentSectionTypes.map { contentSectionType in
             let consentSection = ORKConsentSection(type: contentSectionType)
             
-            consentSection.summary = loremIpsumShortText
+              consentSection.summary = loremIpsumShortText
             
-            if contentSectionType == .overview {
-                consentSection.htmlContent = htmlContentString
-            }
-            else {
+//            if contentSectionType == .overview {
+//              //  consentSection.htmlContent = htmlContentString
+//            }
+          //  else {
                 consentSection.content = loremIpsumLongText
-            }
+          //  }
             
             return consentSection
         }
@@ -1159,12 +1161,12 @@ enum TaskListRow: Int, CustomStringConvertible {
             This is an example of a section that is only in the review document
             or only in the generated PDF, and is not displayed in `ORKVisualConsentStep`.
         */
-        let consentSection = ORKConsentSection(type: .onlyInDocument)
-        consentSection.summary = NSLocalizedString(".OnlyInDocument Scene Summary", comment: "")
-        consentSection.title = NSLocalizedString(".OnlyInDocument Scene", comment: "")
-        consentSection.content = loremIpsumLongText
+//        let consentSection = ORKConsentSection(type: .onlyInDocument)
+//        consentSection.summary = NSLocalizedString(".OnlyInDocument Scene Summary", comment: "")
+//        consentSection.title = NSLocalizedString(".OnlyInDocument Scene", comment: "")
+//        consentSection.content = loremIpsumLongText
         
-        consentSections += [consentSection]
+        //consentSections += [consentSection]
         
         // Set the sections on the document after they've been created.
         consentDocument.sections = consentSections
