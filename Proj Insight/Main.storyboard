@@ -1273,10 +1273,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="0sd-lB-06z">
                             <connections>
-                                <segue destination="gkq-gC-aq7" kind="show" id="vb5-DF-Yc1"/>
+                                <action selector="sectionOverviewNextClicked:" destination="jtE-B1-txi" id="lbB-QX-8A0"/>
+                                <segue destination="gkq-gC-aq7" kind="show" identifier="overviewToDataGatheringSegue" id="vb5-DF-Yc1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sectionOverviewLongtext" destination="hR4-w5-MHq" id="ZPy-rC-aZW"/>
+                        <outlet property="sectionOverviewShorttext" destination="Wym-p7-8Or" id="QRY-du-2g4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kza-pM-Zxd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1344,10 +1349,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="LVK-g1-YLf">
                             <connections>
+                                <action selector="sectionDataGatheringNext:" destination="gkq-gC-aq7" id="YdQ-XK-PlV"/>
                                 <segue destination="3VE-Pq-0cE" kind="show" id="oon-Gg-YSX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sectionDataGatheringLongtext" destination="cp2-49-dhp" id="6G9-aL-6O3"/>
+                        <outlet property="sectionDataGatheringShorttext" destination="zXy-0L-v2s" id="2Lv-cP-nMK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mbh-KA-YRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1397,10 +1407,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="PGi-8o-WAp">
                             <connections>
+                                <action selector="sectionPrivacyNext:" destination="3VE-Pq-0cE" id="0vI-qZ-zza"/>
                                 <segue destination="eCu-S3-T43" kind="show" id="Uhn-8Y-Tsj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sectionPrivacyLongtext" destination="xkp-by-5Mb" id="lEH-wD-QGr"/>
+                        <outlet property="sectionPrivacyShorttext" destination="Dyj-Zc-fiO" id="h5k-ga-4kK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSd-Fe-YLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1450,10 +1465,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="b85-YA-lru">
                             <connections>
+                                <action selector="sectionDataUseNext:" destination="eCu-S3-T43" id="OSh-cd-FEe"/>
                                 <segue destination="ksg-N6-BjL" kind="show" id="Rg2-eb-4ZH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sectionDataUseLongtext" destination="C4e-Op-xLJ" id="pb6-19-wZH"/>
+                        <outlet property="sectionDataUseShorttext" destination="xJY-Bp-J2E" id="chi-MH-xC6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOb-cX-2DV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1503,10 +1523,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Q0O-mE-FXY">
                             <connections>
+                                <action selector="sectionTimeCommitNext:" destination="ksg-N6-BjL" id="CWk-qL-Qtz"/>
                                 <segue destination="S6k-NH-bQq" kind="show" id="4GJ-ce-1h1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sectionTimeCommitLongtext" destination="wYA-sQ-O0Q" id="J0g-eR-Nvb"/>
+                        <outlet property="sectionTimeCommitShorttext" destination="xod-FC-Gz8" id="66n-2z-pjb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ko-Lu-GiJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1556,10 +1581,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="nl9-Ae-v6C">
                             <connections>
+                                <action selector="sectionStudySurveyNext:" destination="S6k-NH-bQq" id="Xyv-ow-xB4"/>
                                 <segue destination="7LI-ka-XpP" kind="show" id="0de-ej-6a8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sectionStudySurveyLongtext" destination="iTw-7a-bcw" id="eeX-ti-m5v"/>
+                        <outlet property="sectionStudySurveyShorttext" destination="6ni-EP-dsF" id="Bxg-kg-N8q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FaJ-YL-Sya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1609,10 +1639,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="A4s-jU-bhG">
                             <connections>
+                                <action selector="sectionStudyTaskNext:" destination="7LI-ka-XpP" id="Dlq-Dr-Nmq"/>
                                 <segue destination="9Lo-28-k37" kind="show" id="CrI-Mz-Kb0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sectionStudyTaskLongtext" destination="S1e-Bs-7HV" id="Jgc-Ts-bME"/>
+                        <outlet property="sectionStudyTaskShorttext" destination="DZH-Nm-HWR" id="ok7-YK-d36"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pq6-Vs-DgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1662,12 +1697,18 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="CDd-gS-0Dr">
                             <connections>
-                                <action selector="save:" destination="9Lo-28-k37" id="qgZ-Jt-aVa"/>
+                                <action selector="save:" destination="9Lo-28-k37" id="4be-dN-0aC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sectionWithdrawLongtext" destination="hjd-iJ-A05" id="j0Z-9a-smB"/>
+                        <outlet property="sectionWithdrawShorttext" destination="0HV-lN-4y8" id="uZ0-J4-SId"/>
+                        <segue destination="0to-D3-kWj" kind="unwind" identifier="saveTaskSegue" unwindAction="unwindToTaskBuilder:" id="6Id-CJ-xlC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cz2-JQ-Grs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0to-D3-kWj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="13676" y="4764"/>
         </scene>

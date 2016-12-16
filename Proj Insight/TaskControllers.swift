@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ResearchKit
 
 // Yes or no question
 class TitleDescriptionView: UIViewController, UITextFieldDelegate {
@@ -303,12 +304,198 @@ class ScaleQuestion: UIViewController, UITextFieldDelegate {
 }
 class ConsentTask: UIViewController, UITextFieldDelegate {
     
+    
+    var consentDocument: [ORKConsentSection] = []
+    var overviewSection = ORKConsentSection(type: .overview)
+    var dataGatheringSection = ORKConsentSection(type: .dataGathering)
+    var privacySection = ORKConsentSection(type: .privacy)
+    var dataUseSection = ORKConsentSection(type: .dataUse)
+    var timeCommitmentSection = ORKConsentSection (type: .timeCommitment)
+    var studySurveySection = ORKConsentSection (type: .studySurvey)
+    var studyTasksSection = ORKConsentSection (type: .studyTasks)
+    var withdrawingSection = ORKConsentSection (type: .withdrawing)
+    @IBOutlet weak var sectionOverviewLongtext: UITextView!
+    @IBOutlet weak var sectionOverviewShorttext: UITextField!
+    
+    @IBAction func sectionOverviewNextClicked(_ sender: Any) {
+       
+        overviewSection.summary = sectionOverviewShorttext.text
+        overviewSection.content = sectionOverviewLongtext.text
+        
+        performSegue(withIdentifier: "overviewToDataGatheringSegue", sender: self)
+
+        
+        
+    }
+   
+    
+    @IBOutlet weak var sectionDataGatheringShorttext: UITextField!
+    
+    
+    @IBOutlet weak var sectionDataGatheringLongtext: UITextView!
+    
+    @IBAction func sectionDataGatheringNext(_ sender: Any) {
+        
+        dataGatheringSection.summary = sectionDataGatheringShorttext.text
+        dataGatheringSection.content = sectionDataGatheringLongtext.text
+        
+    }
+    
+    @IBOutlet weak var sectionPrivacyShorttext: UITextField!
+    
+    @IBOutlet weak var sectionPrivacyLongtext: UITextView!
+    
+    
+    @IBAction func sectionPrivacyNext(_ sender: Any) {
+        
+       privacySection.summary = sectionPrivacyShorttext.text
+       privacySection.content = sectionPrivacyLongtext.text
+        
+
+    }
+    
+    @IBOutlet weak var sectionDataUseShorttext: UITextField!
+    
+    @IBOutlet weak var sectionDataUseLongtext: UITextView!
+    
+    @IBAction func sectionDataUseNext(_ sender: Any) {
+        dataUseSection.summary = sectionDataUseShorttext.text
+        dataUseSection.content = sectionDataUseLongtext.text
+        
+
+    }
+    
+    @IBOutlet weak var sectionTimeCommitShorttext: UITextField!
+    
+    
+    @IBOutlet weak var sectionTimeCommitLongtext: UITextView!
+    
+    @IBAction func sectionTimeCommitNext(_ sender: Any) {
+        
+        timeCommitmentSection.summary = sectionTimeCommitShorttext.text
+        timeCommitmentSection.content = sectionTimeCommitLongtext.text
+        
+    }
+    
+    @IBOutlet weak var sectionStudySurveyShorttext: UITextField!
+    
+    @IBOutlet weak var sectionStudySurveyLongtext: UITextView!
+   
+    @IBAction func sectionStudySurveyNext(_ sender: Any) {
+
+        studySurveySection.summary = sectionStudySurveyShorttext.text
+        studySurveySection.content = sectionStudySurveyLongtext.text
+        
+
+    }
+    
+    
+    @IBOutlet weak var sectionStudyTaskShorttext: UITextField!
+    
+    @IBOutlet weak var sectionStudyTaskLongtext: UITextView!
+    
+    
+    @IBAction func sectionStudyTaskNext(_ sender: Any) {
+        
+        studyTasksSection.summary = sectionStudyTaskShorttext.text
+        studyTasksSection.content = sectionStudyTaskLongtext.text
+        
+
+    }
+    
+    @IBOutlet weak var sectionWithdrawShorttext: UITextField!
+    
+    @IBOutlet weak var sectionWithdrawLongtext: UITextView!
+    
+    
+    @IBAction func save(_ sender: Any) {
+    
+   
+        withdrawingSection.summary = sectionWithdrawShorttext.text
+        withdrawingSection.content = sectionWithdrawLongtext.text
+        
+      
+        
+        let theDocument: ORKConsentDocument = ORKConsentDocument.init()
+        
+        
+        theDocument.sections = [overviewSection,dataGatheringSection,privacySection,dataUseSection,timeCommitmentSection,
+        studySurveySection,studyTasksSection,withdrawingSection]
+        
+        
+        let sigInit  = ORKConsentSignature(forPersonWithTitle: nil, dateFormatString: nil, identifier: "ConsentDocumentParticipantSignature")
+        
+        
+        
+        theDocument.addSignature(sigInit)
+        
+        let consentStep = ORKVisualConsentStep(identifier: "VisualConsentStep", document: theDocument)
+        
+       
+        
+        let signature = theDocument.signatures!.first!
+        
+        let reviewConsentStep = ORKConsentReviewStep(identifier: "ConsentReviewStep", signature: signature, in: theDocument)
+        
+        reviewConsentStep.text = "Review the consent form."
+        reviewConsentStep.reasonForConsent = "Consent to join the Study."
+        reviewConsentStep.title = "Consent"
+        
+       
+        
+        let completionStep = ORKCompletionStep(identifier: "CompletionStep")
+        completionStep.title = "Welcome aboard."
+        completionStep.text = "Thank you for joining this study."
+        
+        let orderedTask = ORKOrderedTask(identifier: "Join", steps: [consentStep, reviewConsentStep, completionStep])
+        
+        
+        
+        let taskListRow = ActivitiesConnections.sharedInstance.tempTaskListRow
+        
+        let name = "\(taskListRow!)"
+        let type = taskListRow?.taskType
+        
+        
+        var photo = #imageLiteral(resourceName: "activityIcon.png") //Set default photo to be the activtyIcon
+        if (type == "Question"){
+            photo  = #imageLiteral(resourceName: "questionMarkIcon.png")                           //questionMarkIcon.png
+            
+        }else if(type == "Onboarding"){
+            photo = #imageLiteral(resourceName: "onBoardingIcon.png")                             //onBoardingIcon.png
+        }else{
+            photo = #imageLiteral(resourceName: "activityIcon.png")                             //activityIcon.png
+        }
+        
+        //Assign the new text in this task to be the text of what was entered
+        
+      
+        let task = orderedTask
+        
+        
+        let taskToStoreInArray = Task(name: name, photo: photo, type: type!, task: task)
+        ActivitiesConnections.sharedInstance.studyCurrent?.addTask(taskToStoreInArray!) //Adding task to study arr
+        
+        
+        NotificationCenter.default.post(name: .reload, object: nil) //Need this to update the tableview in taskbuilderViewController.swift
+        
+        
+        taskListRow?.resetStrings() //This will return the strings to the "Example" strings if a preview is chosen
+        
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 1], animated: true);
+        
+        performSegue(withIdentifier: "saveTaskSegue", sender: self)        
+        
+    }
+    
+    
+
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func save(_ sender: Any) {
-    }
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()
