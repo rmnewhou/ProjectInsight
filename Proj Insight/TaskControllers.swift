@@ -303,6 +303,12 @@ class ScaleQuestion: UIViewController, UITextFieldDelegate {
 }
 class ConsentTask: UIViewController, UITextFieldDelegate {
     
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func save(_ sender: Any) {
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()

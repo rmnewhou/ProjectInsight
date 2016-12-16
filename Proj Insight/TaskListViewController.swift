@@ -122,7 +122,7 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
         }
         
         let addEditAction = UIAlertAction(title: "Customize Task", style: UIAlertActionStyle.default){ (ACTION) in
-            if (indexPath.section == 0){
+            if (indexPath.section == 1){
                 if indexPath.row == 0 /*boolean Question*/          ||
                     indexPath.row == 1 /*Date Question*/            ||
                     indexPath.row == 2 /*Date & Time Question*/     ||
@@ -141,7 +141,7 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
                     //This is the default one right now
                     self.performSegue(withIdentifier: "TitleAndDescriptionSegue", sender: self)
                 }
-            }else if (indexPath.section == 1){
+            }else if (indexPath.section == 0){
                 if indexPath.row == 0 /*Consent Question*/{
                     self.performSegue(withIdentifier: "ConsentSegue", sender: self)
                 }
