@@ -21,6 +21,8 @@ import FirebaseDatabase
 class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textFieldLoginEmail: UITextField!
     @IBOutlet weak var textFieldLoginPassword: UITextField!
+    //var ref = FIRDatabase.database().reference()
+    
     
     let loginToStudy = "LoginToStudy"
     @IBAction func loginSelected(_ sender: Any) {
@@ -31,6 +33,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textFieldLoginPassword.text = ""
         }
     @IBAction func signUpSelected(_ sender: Any) {
+        //et auth = FIRAuth.auth()!
+        
         let alert = UIAlertController(title: "Sign Up",
                                       message: "Please enter information below",
                                       preferredStyle: .alert)
@@ -44,9 +48,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                                                    password: passwordField.text!) { user, error in
                                                                     if error == nil {
                                                                         FIRAuth.auth()!.signIn(withEmail: self.textFieldLoginEmail.text!,
-                                                                                               password: self.textFieldLoginPassword.text!)
+                                                                                           password: self.textFieldLoginPassword.text!)
+                                                                        print("test")
+                                                                        let ref = FIRDatabase.database().reference()
+                                                                        
+                                                                        ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("FirstName").setValue("No First Name Entered")
+                                                                        ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("LastName").setValue(" No Surname Entered")
+                                                                        ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("Gender").setValue("No Gender Entered")
+                                                                        ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("DOB").setValue("No Date of Birth Entered")
+                                                                        ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("Age").setValue(" No Age Entered")
+                                                                        ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("AccountType").setValue("Researcher")
+                                                                        ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("Weight").setValue("No Weight Entered")
+                                                                        
+                                                                        
+                                                                        
                                                                     }
                                         }
+
+                                        
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
@@ -71,12 +90,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         textFieldLoginEmail.delegate = self
         textFieldLoginPassword.delegate = self
-         print("\n\nHERE did load")
     }
     override func viewDidAppear(_ animated: Bool) {
         FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
             if user != nil {
-                print("\n\nHERE did appear")
                 self.performSegue(withIdentifier: self.loginToStudy, sender: nil)
             }
         }

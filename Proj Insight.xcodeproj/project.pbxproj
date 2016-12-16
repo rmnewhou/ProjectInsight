@@ -40,6 +40,8 @@
 		37486E861DCD26B000832935 /* TermsConditionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37486E851DCD26B000832935 /* TermsConditionsBuilder.swift */; };
 		376114DB1DC191EF00493C51 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376114D81DC191C600493C51 /* ResearchKit.framework */; };
 		376114DC1DC191EF00493C51 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 376114D81DC191C600493C51 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		94C34B1E1E02121B00787A29 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C34B1D1E02121B00787A29 /* ProfileViewController.swift */; };
+		94C34B221E0355DC00787A29 /* ProfileEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C34B211E0355DC00787A29 /* ProfileEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		376114D11DC191C600493C51 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		4432E8EADD4644FE939F162C /* Pods-Proj Insight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proj Insight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proj Insight/Pods-Proj Insight.debug.xcconfig"; sourceTree = "<group>"; };
 		519ECA117D8CC39B38ECF4E3 /* Pods_Proj_Insight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proj_Insight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94C34B1D1E02121B00787A29 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		94C34B211E0355DC00787A29 /* ProfileEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewController.swift; sourceTree = "<group>"; };
 		F15DD163CF9F830DC4D98E35 /* Pods-Proj Insight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proj Insight.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proj Insight/Pods-Proj Insight.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +178,8 @@
 				1147B52B1DD6CC2E00B9B95D /* TaskControllers.swift */,
 				11A0712A1DBEBCC000BEDFE2 /* AppDelegate.swift */,
 				11DF3BA61DF4C42000468A83 /* Main.storyboard */,
+				94C34B211E0355DC00787A29 /* ProfileEditorViewController.swift */,
+				94C34B1D1E02121B00787A29 /* ProfileViewController.swift */,
 				11F6C4861DF49A8300B86454 /* LoginViewController.swift */,
 				1147B51C1DD55BA400B9B95D /* TaskCell.swift */,
 				1147B51A1DD5277600B9B95D /* TaskBuilderViewController.swift */,
@@ -397,6 +403,7 @@
 			files = (
 				11A071411DBEC74F00BEDFE2 /* Study.swift in Sources */,
 				11A0712D1DBEBCC000BEDFE2 /* ViewController.swift in Sources */,
+				94C34B1E1E02121B00787A29 /* ProfileViewController.swift in Sources */,
 				11A0713F1DBEC60800BEDFE2 /* AllStudiesTableViewCell.swift in Sources */,
 				37486E861DCD26B000832935 /* TermsConditionsBuilder.swift in Sources */,
 				11A071431DBED5C900BEDFE2 /* myStudiesTableViewCell.swift in Sources */,
@@ -412,6 +419,7 @@
 				11F6C4871DF49A8300B86454 /* LoginViewController.swift in Sources */,
 				115B7A651DD14BB8004BB8B2 /* ActivitiesConnections.swift in Sources */,
 				115B7A5F1DCD56DD004BB8B2 /* TaskListViewController.swift in Sources */,
+				94C34B221E0355DC00787A29 /* ProfileEditorViewController.swift in Sources */,
 				110354BE1DF8AEBA00551D30 /* DashboardViewController.swift in Sources */,
 				1147B51B1DD5277600B9B95D /* TaskBuilderViewController.swift in Sources */,
 			);
