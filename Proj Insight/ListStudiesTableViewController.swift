@@ -18,7 +18,7 @@ class ListStudiesTableViewController: UITableViewController, ORKTaskViewControll
     @IBAction func signOutPressed(_ sender: Any) {
         do {
             try FIRAuth.auth()!.signOut()
-            //dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         } catch {
             
         }
@@ -46,27 +46,11 @@ class ListStudiesTableViewController: UITableViewController, ORKTaskViewControll
         tableView.reloadData()
     }
 
-   /*
-    func displayWalkthroughs()
-    {
-        // check if walkthroughs have been shown
-        //let userDefaults = UserDefaults.standard
-        //let displayedWalkthrough = userDefaults.bool(forKey: "DisplayedWalkthrough")
-        
-        
-        // if we haven't shown the walkthroughs, let's show them
-        //if !displayedWalkthrough {
-        // instantiate neew PageVC via storyboard
-        if 
-            if let pageViewController = storyboard?.instantiateViewController(withIdentifier: "PageViewController") as? PageViewController {
-                self.present(pageViewController, animated: true, completion: nil)
-            }
-        //}
-    }
-    */
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //displayWalkthroughs()
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         //searchController.extendedLayoutIncludesOpaqueBars = true;
@@ -80,7 +64,6 @@ class ListStudiesTableViewController: UITableViewController, ORKTaskViewControll
         
         loadStudies()
     }
-    
     func refresh(sender:AnyObject) {
         loadStudies()
     }
