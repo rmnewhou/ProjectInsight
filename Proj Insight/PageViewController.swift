@@ -6,9 +6,9 @@ import UIKit
 class PageViewController: UIPageViewController
 {
     // Walkthrough screen text
-    var pageHeaders = ["Welcome to Insight Study Buider", "View Studies", "Create Studies", "Coming Soon!", "Researching made easy!"]
-    var pageImages = ["Insight symbol white", "AllStudies", "AddTask", "Under_construction", "easyStudy"]
-    var pageDescriptions = ["Participate in studies created by others or create your own by customizing questions and tasks.", "Check out the latest studies created by other users. ", "Use our unique task builder to join questions in tasks together for a study specific to your needs.", "- Save studies in database\n- Active task customization\n- Add study attributes and more!", ""]
+    var pageHeaders = ["Welcome to Insight Study Buider", "View Studies", "Create Studies", "Personal Profile", "Coming Soon!", "Researching made easy!"]
+    var pageImages = ["Insight symbol white", "AllStudies", "AddTask", "profileScreen", "Under_construction", "easyStudy"]
+    var pageDescriptions = ["Participate in studies created by others or create your own by customizing questions and tasks.", "Check out the latest studies created by other users. ", "Use our unique task builder to join questions and tasks together for a study specific to your needs.", "Personalize your information to have access to studies based on your profile.", "- Save studies in database\n- Active task customization\n- Results analysis and more!", ""]
    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent

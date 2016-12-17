@@ -2,9 +2,7 @@
 //  WalkthroughViewController.swift
 // 
 //
-//  Created by Duc Tran on 11/29/15.
-//  Copyright © 2015 Developers Academy. All rights reserved.
-//
+
 
 import UIKit
 
@@ -42,8 +40,8 @@ class WalkthroughViewController: UIViewController
         pageControl.currentPage = index
         
         // customize the next and start button
-        startButton.isHidden = (index == 4) ? false : true
-        nextButton.isHidden = (index == 4) ? true : false
+        startButton.isHidden = (index == 5) ? false : true
+        nextButton.isHidden = (index == 5) ? true : false
         startButton.layer.cornerRadius = 5.0
         startButton.layer.masksToBounds = true
     }

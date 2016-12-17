@@ -6,6 +6,11 @@
 //  Copyright © 2016 Mackenzie Kary. All rights reserved.
 //
 
+/*
+ This file is a "Study" object. Studies will contain information such as the name of the study, the 
+ tasks accociated 
+ */
+
 import Foundation
 import UIKit
 import ResearchKit

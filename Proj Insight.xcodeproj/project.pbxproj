@@ -30,6 +30,10 @@
 		1176CA921E0464DE00FB26E6 /* AllStudies.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CA8F1E0464DE00FB26E6 /* AllStudies.png */; };
 		1176CA931E0464DE00FB26E6 /* MyStudies.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CA901E0464DE00FB26E6 /* MyStudies.png */; };
 		1176CA971E046DD700FB26E6 /* easyStudy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CA961E046DD700FB26E6 /* easyStudy.png */; };
+		1176CA9D1E04A49200FB26E6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1176CA9B1E04A49200FB26E6 /* ProfileViewController.swift */; };
+		1176CA9E1E04A49200FB26E6 /* ProfileEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1176CA9C1E04A49200FB26E6 /* ProfileEditorViewController.swift */; };
+		1176CAA11E04A71500FB26E6 /* User_Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CAA01E04A71500FB26E6 /* User_Circle.png */; };
+		1176CAA31E04B89B00FB26E6 /* profileScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 1176CAA21E04B89B00FB26E6 /* profileScreen.png */; };
 		11A0712B1DBEBCC000BEDFE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0712A1DBEBCC000BEDFE2 /* AppDelegate.swift */; };
 		11A0712D1DBEBCC000BEDFE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0712C1DBEBCC000BEDFE2 /* ViewController.swift */; };
 		11A071321DBEBCC000BEDFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A071311DBEBCC000BEDFE2 /* Assets.xcassets */; };
@@ -112,6 +116,10 @@
 		1176CA8F1E0464DE00FB26E6 /* AllStudies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AllStudies.png; sourceTree = "<group>"; };
 		1176CA901E0464DE00FB26E6 /* MyStudies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyStudies.png; sourceTree = "<group>"; };
 		1176CA961E046DD700FB26E6 /* easyStudy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = easyStudy.png; sourceTree = "<group>"; };
+		1176CA9B1E04A49200FB26E6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1176CA9C1E04A49200FB26E6 /* ProfileEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditorViewController.swift; sourceTree = "<group>"; };
+		1176CAA01E04A71500FB26E6 /* User_Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User_Circle.png; sourceTree = "<group>"; };
+		1176CAA21E04B89B00FB26E6 /* profileScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileScreen.png; sourceTree = "<group>"; };
 		11A071271DBEBCC000BEDFE2 /* Proj Insight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proj Insight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A0712A1DBEBCC000BEDFE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11A0712C1DBEBCC000BEDFE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,11 +160,13 @@
 		1147B5221DD5652400B9B95D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1176CAA01E04A71500FB26E6 /* User_Circle.png */,
 				1176CA851E045D9300FB26E6 /* profileicon.png */,
 				1176CA8E1E0464DE00FB26E6 /* AddTask.png */,
 				1176CA8F1E0464DE00FB26E6 /* AllStudies.png */,
 				1176CA901E0464DE00FB26E6 /* MyStudies.png */,
 				1176CA961E046DD700FB26E6 /* easyStudy.png */,
+				1176CAA21E04B89B00FB26E6 /* profileScreen.png */,
 				1176CA861E045D9300FB26E6 /* Under_construction.png */,
 				11F6C4841DF498CC00B86454 /* Insight symbol white.png */,
 				1147B5271DD593C800B9B95D /* questionMarkIcon.png */,
@@ -210,6 +220,8 @@
 				110354C11DF8AECD00551D30 /* PieChartDataSource.swift */,
 				112766DC1E036B0F00575F8C /* PageViewController.swift */,
 				112766DD1E036B0F00575F8C /* WalkthroughViewController.swift */,
+				1176CA9B1E04A49200FB26E6 /* ProfileViewController.swift */,
+				1176CA9C1E04A49200FB26E6 /* ProfileEditorViewController.swift */,
 				376114D11DC191C600493C51 /* ResearchKit.xcodeproj */,
 				11A071311DBEBCC000BEDFE2 /* Assets.xcassets */,
 				11A071331DBEBCC000BEDFE2 /* LaunchScreen.storyboard */,
@@ -360,12 +372,14 @@
 				1176CA911E0464DE00FB26E6 /* AddTask.png in Resources */,
 				1176CA931E0464DE00FB26E6 /* MyStudies.png in Resources */,
 				11DF3BA71DF4C42000468A83 /* Main.storyboard in Resources */,
+				1176CAA31E04B89B00FB26E6 /* profileScreen.png in Resources */,
 				1176CA921E0464DE00FB26E6 /* AllStudies.png in Resources */,
 				1176CA8A1E045D9300FB26E6 /* profileicon.png in Resources */,
 				1147B52A1DD594FC00B9B95D /* activityIcon.png in Resources */,
 				11A071321DBEBCC000BEDFE2 /* Assets.xcassets in Resources */,
 				11DF3BA51DF4C12300468A83 /* GoogleService-Info.plist in Resources */,
 				1125BCBB1DC065A700B4687B /* editIcon.png in Resources */,
+				1176CAA11E04A71500FB26E6 /* User_Circle.png in Resources */,
 				1125BCBA1DC065A700B4687B /* clipBoardIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +445,7 @@
 				37486E861DCD26B000832935 /* TermsConditionsBuilder.swift in Sources */,
 				11A071431DBED5C900BEDFE2 /* myStudiesTableViewCell.swift in Sources */,
 				11A071451DBED6B700BEDFE2 /* myStudiesTableViewController.swift in Sources */,
+				1176CA9D1E04A49200FB26E6 /* ProfileViewController.swift in Sources */,
 				1147B5241DD5697B00B9B95D /* Task.swift in Sources */,
 				11DF3BA91DF4D38C00468A83 /* User.swift in Sources */,
 				115B7A5E1DCD56DD004BB8B2 /* TaskListRow.swift in Sources */,
@@ -445,6 +460,7 @@
 				115B7A651DD14BB8004BB8B2 /* ActivitiesConnections.swift in Sources */,
 				115B7A5F1DCD56DD004BB8B2 /* TaskListViewController.swift in Sources */,
 				110354BE1DF8AEBA00551D30 /* DashboardViewController.swift in Sources */,
+				1176CA9E1E04A49200FB26E6 /* ProfileEditorViewController.swift in Sources */,
 				1147B51B1DD5277600B9B95D /* TaskBuilderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

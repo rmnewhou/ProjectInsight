@@ -170,7 +170,7 @@ class TaskListViewController: UITableViewController, ORKTaskViewControllerDelega
             print("Cancel")
         }
 
-        
+        // Add the elements to the action sheet
         popUpActionSheet.addAction(previewAction)
         popUpActionSheet.addAction(addEditAction)
         popUpActionSheet.addAction(cancelAction)

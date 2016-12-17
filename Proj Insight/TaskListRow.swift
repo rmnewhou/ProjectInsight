@@ -29,6 +29,13 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 */
 
+/* 
+ Insight notes:
+    This swift file is dedicated towards taking the data that is gathered from the customization windows.
+    The information will be use to construct whatever task the user had clicked on. 
+    If the information was not changed in the customization windows, then the default/example text will be used.
+*/
+
 import ResearchKit
 import AudioToolbox
 
@@ -52,13 +59,7 @@ class SystemSound {
     }
 }
 
-
-/**
-    An enum that corresponds to a row displayed in a `TaskListViewController`.
-
-    Each of the tasks is composed of one or more steps giving examples of the
-    types of functionality supported by the ResearchKit framework.
-*/
+// Initialization of items which the user can customize
 var inputtedDescription = ""
 var inputtedDetailedDescription = ""
 var inputtedTitle = ""
@@ -70,6 +71,14 @@ var leftDescriptor = ""
 var rightDescriptor = ""
 var minValue = -1
 var maxValue = -1
+
+
+/**
+ An enum that corresponds to a row displayed in a `TaskListViewController`.
+ 
+ Each of the tasks is composed of one or more steps giving examples of the
+ types of functionality supported by the ResearchKit framework.
+ */
 
 enum TaskListRow: Int, CustomStringConvertible {
 
@@ -110,23 +119,23 @@ enum TaskListRow: Int, CustomStringConvertible {
     /// Returns an array of all the task list row enum cases.
     static var sections: [ TaskListRowSection ] {
         return [
-                        TaskListRowSection(title: "Onboarding", rows:
+            TaskListRowSection(title: "Onboarding", rows:
                 [
                     .consent
                 ]),
-                        TaskListRowSection(title: "Questions", rows:
-                            [
-                                .booleanQuestion,
-                                .dateQuestion,
-                                .dateTimeQuestion,
-                                .numericQuestion,
-                                .scaleQuestion,
-                                .textQuestion,
-                                .textChoiceQuestion,
-                                .timeIntervalQuestion,
-                                .timeOfDayQuestion,
-                                .valuePickerChoiceQuestion,
-                                ]),
+            TaskListRowSection(title: "Questions", rows:
+                [
+                    .booleanQuestion,
+                    .dateQuestion,
+                    .dateTimeQuestion,
+                    .numericQuestion,
+                    .scaleQuestion,
+                    .textQuestion,
+                    .textChoiceQuestion,
+                    .timeIntervalQuestion,
+                    .timeOfDayQuestion,
+                    .valuePickerChoiceQuestion,
+                ]),
 
                         
             TaskListRowSection(title: "Active Tasks", rows:
@@ -647,7 +656,7 @@ enum TaskListRow: Int, CustomStringConvertible {
         if (maxValue != -1){
             maximumValue = maxValue
         }else{
-            maximumValue = 10           //Default Value
+            maximumValue = 10          //Default Value
         }
         print("Min Value = ", minimumValue)
         print("Max Value = ", maximumValue)
@@ -1219,7 +1228,7 @@ enum TaskListRow: Int, CustomStringConvertible {
     private var loremIpsumLongText: String {
         return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam adhuc, meo fortasse vitio, quid ego quaeram non perspicis. Plane idem, inquit, et maxima quidem, qua fieri nulla maior potest. Quonam, inquit, modo? An potest, inquit ille, quicquam esse suavius quam nihil dolere? Cave putes quicquam esse verius. Quonam, inquit, modo?"
     }
-    
+    // The set functions will be called in the TaskControllers file, where the the user inputs will be taken
     public func setDescription(input: String) {
         inputtedDescription = input
     }
@@ -1282,7 +1291,7 @@ enum TaskListRow: Int, CustomStringConvertible {
     public func getMaxValue() -> Int {
         return maxValue
     }
-   
+   // Resenting the strings ensures that if the user decides to create a new task, the input values will be reset
     public func resetStrings(){
         inputtedDescription = ""
         inputtedDetailedDescription = ""

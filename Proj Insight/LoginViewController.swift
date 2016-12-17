@@ -60,7 +60,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                                                                                password: self.textFieldLoginPassword.text!)
                                                                         self.isNewUser = true
                                                                         if let pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as? PageViewController {
-                                                                           // self.isNewUser = true
+                                                                            let ref = FIRDatabase.database().reference()
+                                                                            ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("FirstName").setValue("No First Name Entered")
+                                                                            ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("LastName").setValue(" No Surname Entered")
+                                                                            ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("Gender").setValue("No Gender Entered")
+                                                                            ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("DOB").setValue("No Date of Birth Entered")
+                                                                            ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("Age").setValue(" No Age Entered")
+                                                                            ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("AccountType").setValue("Free User")
+                                                                            ref.child("Users").child((FIRAuth.auth()!.currentUser?.uid)!).child("Weight").setValue("No Weight Entered")
                                                                             self.present(pageViewController, animated: true, completion: nil)
                                                                         }
 
